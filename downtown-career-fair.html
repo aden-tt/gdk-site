@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Downtown Career Fair - GameDev Knights</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jaro&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="js/components.js" defer></script>
+<style>
+  /* Page Specific Interactive Styles */
+  .countdown-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 0.5rem;
+    margin: 1.2rem 0 1.5rem;
+  }
+  .countdown-box {
+    background: var(--dark-gray);
+    border: 2px solid #000;
+    box-shadow: 3px 3px 0px #000;
+    padding: 0.75rem;
+    text-align: center;
+    flex: 1;
+    border-radius: 4px;
+  }
+  .countdown-box .number {
+    font-family: 'Jaro', sans-serif;
+    font-size: 2.5rem;
+    color: var(--yellow);
+    line-height: 1;
+  }
+  .countdown-box .label {
+    font-size: 0.75rem;
+    color: var(--gray);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  
+  /* Details List Styling */
+  .event-details-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .event-details-list li {
+    font-size: 0.9rem;
+    color: var(--gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.4rem;
+  }
+  .event-details-list strong {
+    color: #fff;
+  }
+  .tbd-badge {
+    background: #ff4444;
+    color: #fff;
+    font-family: 'Jaro', sans-serif;
+    font-size: 0.85rem;
+    padding: 2px 6px;
+    border-radius: 2px;
+    letter-spacing: 0.5px;
+    box-shadow: 1px 1px 0px #000;
+    animation: pulse-tbd 1.5s infinite alternate ease-in-out;
+  }
+
+  @keyframes pulse-tbd {
+    0% { opacity: 0.7; }
+    100% { opacity: 1; }
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .stat-node {
+    background: #ffffff;
+    border: 3px solid #000000;
+    box-shadow: 4px 4px 0px #000000;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 4px;
+  }
+  .stat-val {
+    font-family: 'Jaro', sans-serif;
+    font-size: 2.2rem;
+    color: #000;
+    line-height: 1.1;
+  }
+  .stat-lbl {
+    font-size: 0.8rem;
+    color: #555;
+    font-weight: 500;
+  }
+</style>
+</head>
+
+<body>
+
+<div id="global-header"></div>
+
+<section class="page-banner">
+  <h1>DOWNTOWN CAREER FAIR</h1>
+  <p class="subtitle">Connect with industry leaders at UCF Downtown</p>
+</section>
+
+<div class="top-showcase-carousel">
+  <div class="fair-carousel">
+    <div class="fair-carousel-track">
+      <div class="fair-carousel-slide"><img src="../images/career-fair-1.png" alt="Recruiter reviewing student projects"></div>
+      <div class="fair-carousel-slide"><img src="../images/career-fair-1.png" alt="Main networking venue hall"></div>
+      <div class="fair-carousel-slide"><img src="../images/career-fair-1.png" alt="Onsite portfolio evaluations"></div>
+    </div>
+    <button class="fair-carousel-btn prev" aria-label="Previous slide">&#10094;</button>
+    <button class="fair-carousel-btn next" aria-label="Next slide">&#10095;</button>
+    <div class="fair-carousel-dots">
+      <span class="fair-dot active"></span>
+      <span class="fair-dot"></span>
+      <span class="fair-dot"></span>
+    </div>
+  </div>
+</div>
+
+<div class="inner-page-container">
+  <div class="content-wrapper">
+    
+    <main class="primary-content">
+      <h2>ABOUT THE EVENT</h2>
+      <p>The GameDev Knights Downtown Career Fair is Central Florida's premier student-led networking pipeline. Hosted annually at the UCF Downtown campus, this dedicated showcase bridges the gap between raw student talent and industry veterans from AAA, indie, and serious games studios.</p>
+      <p>Whether you're an artist looking to show off your pipeline portfolio, a programmer wanting to break down engine architecture, or a designer displaying functional prototypes, this event places your work directly under the eyes of recruiters actively sourcing candidates.</p>
+
+      <h2>BY THE NUMBERS</h2>
+      <div class="stats-grid">
+        <div class="stat-node">
+          <div class="stat-val">25+</div>
+          <div class="stat-lbl">Studios Attending</div>
+        </div>
+        <div class="stat-node">
+          <div class="stat-val">300+</div>
+          <div class="stat-lbl">Active Resumes</div>
+        </div>
+        <div class="stat-node">
+          <div class="stat-val">15+</div>
+          <div class="stat-lbl">On-Site Interviews</div>
+        </div>
+        <div class="stat-node">
+          <div class="stat-val">100%</div>
+          <div class="stat-lbl">Free Entry</div>
+        </div>
+      </div>
+
+      <h2>EVENT GALLERY</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="../images/career-fair-1.png" alt="Recruiter reviewing work"></div>
+        <div class="gallery-item"><img src="../images/career-fair-1.png" alt="Recruiter reviewing work"></div>
+        <div class="gallery-item"><img src="../images/career-fair-1.png" alt="Recruiter reviewing work"></div>
+        <div class="gallery-item"><img src="../images/career-fair-1.png" alt="Recruiter reviewing work"></div>
+        <div class="gallery-item"><img src="../images/career-fair-1.png" alt="Recruiter reviewing work"></div>
+        <div class="gallery-item"><img src="../images/career-fair-1.png" alt="Recruiter reviewing work"></div>
+      </div>
+    </main>
+
+    <aside class="sidebar-content">
+      
+      <div class="sidebar-card" style="margin-bottom: 2rem;">
+        <h3>EVENT DETAILS</h3>
+        
+        <ul class="event-details-list">
+          <li>
+            <span><strong>DATE:</strong></span>
+            <span class="tbd-badge">TBD</span>
+          </li>
+          <li>
+            <span><strong>TIME:</strong></span>
+            <span class="tbd-badge">TBD</span>
+          </li>
+          <li>
+            <span><strong>LOCATION:</strong></span>
+            <span class="tbd-badge">TBD</span>
+          </li>
+        </ul>
+
+        <p style="font-size: 0.85rem; color: var(--gray); margin-top: 1.2rem; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 0.8rem;">
+          The countdown will lock into place once scheduling grids are finalized:
+        </p>
+        
+        <div class="countdown-container">
+          <div class="countdown-box">
+            <div class="number" id="days">--</div>
+            <div class="label">Days</div>
+          </div>
+          <div class="countdown-box">
+            <div class="number" id="hours">--</div>
+            <div class="label">Hrs</div>
+          </div>
+          <div class="countdown-box">
+            <div class="number" id="minutes">--</div>
+            <div class="label">Min</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>EMPLOYER REGISTRATION</h3>
+        <p style="font-size: 0.9rem; color: var(--gray); margin-bottom: 1.2rem;">Looking to source fresh engineering talent, technical artists, game designers, or production interns?</p>
+        <p style="font-size: 0.9rem; color: var(--gray); margin-bottom: 1.5rem;">Secure a booth space, physical banner slots, or a private interview lounge room on campus.</p>
+        <a href="https://forms.gle/your-recruiter-form-link" target="_blank" class="hub-btn default-color" style="display: block; text-align: center; width: 100%;">
+          RESERVE A BOOTH
+        </a>
+      </div>
+
+    </aside>
+
+  </div>
+</div>
+
+<div id="global-image-modal" class="global-modal-overlay">
+  <span class="global-modal-close">&times;</span>
+  <img class="global-modal-content" id="modal-target-image" src="" alt="Expanded view">
+</div>
+
+<div id="global-footer"></div>
+
+
+<script>
+  // --- TBD Countdown System ---
+  const targetDateString = ""; 
+
+  function updateCountdown() {
+    if (!targetDateString) {
+      document.getElementById('days').innerText = "--";
+      document.getElementById('hours').innerText = "--";
+      document.getElementById('minutes').innerText = "--";
+      return;
+    }
+
+    const targetDate = new Date(targetDateString).getTime();
+    const now = new Date().getTime();
+    const discrepancy = targetDate - now;
+
+    if (discrepancy < 0) {
+      document.getElementById('days').innerText = "00";
+      document.getElementById('hours').innerText = "00";
+      document.getElementById('minutes').innerText = "00";
+      return;
+    }
+
+    const days = Math.floor(discrepancy / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((discrepancy % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((discrepancy % (1000 * 60 * 60)) / (1000 * 60));
+
+    document.getElementById('days').innerText = String(days).padStart(2, '0');
+    document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+    document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
+  // --- Career Fair Showcase Carousel Logic ---
+  const fairTrack = document.querySelector('.fair-carousel-track');
+  const fairSlides = document.querySelectorAll('.fair-carousel-slide');
+  const fairDots = document.querySelectorAll('.fair-carousel-dots .fair-dot');
+  let fairIndex = 0;
+
+  function goToFairSlide(i) {
+    fairIndex = (i + fairSlides.length) % fairSlides.length;
+    fairTrack.style.transform = `translateX(-${fairIndex * 100}%)`;
+    fairDots.forEach(d => d.classList.remove('active'));
+    fairDots[fairIndex].classList.add('active');
+  }
+
+  document.querySelector('.fair-carousel-btn.prev').addEventListener('click', () => goToFairSlide(fairIndex - 1));
+  document.querySelector('.fair-carousel-btn.next').addEventListener('click', () => goToFairSlide(fairIndex + 1));
+  fairDots.forEach((dot, i) => dot.addEventListener('click', () => goToFairSlide(i)));
+
+  // Automatic transition cycle
+  setInterval(() => goToFairSlide(fairIndex + 1), 5000);
+
+  // --- Universal Image Modal System ---
+  const modal = document.getElementById('global-image-modal');
+  const modalImg = document.getElementById('modal-target-image');
+  const closeBtn = document.querySelector('.global-modal-close');
+
+  document.body.addEventListener('click', function(e) {
+    if (e.target.tagName === 'IMG' && !e.target.closest('.logo-box') && !e.target.closest('.navbar-container')) {
+      modal.style.display = 'flex';
+      modalImg.src = e.target.src;
+      modalImg.alt = e.target.alt || "Expanded view";
+    }
+  });
+
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal || e.target === closeBtn) {
+      modal.style.display = 'none';
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === "Escape" && modal.style.display === 'flex') {
+      modal.style.display = 'none';
+    }
+  });
+</script>
+
+</body>
+</html>

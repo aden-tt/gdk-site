@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Involved | GameDev Knights</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jaro&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="js/components.js" defer></script>
+
+</head>
+
+<canvas id="fx-canvas-overlay"></canvas>
+
+<script>
+const canvas = document.getElementById('fx-canvas-overlay');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+class PixelParticle {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    // Square/blocky sizes matching retro motif
+    this.size = Math.floor(Math.random() * 6) + 4; 
+    // High-contrast club theme colors
+    const palette = ['#FFCC00', '#FFFFFF', '#141414', '#8c9bb8', '#ff4757'];
+    this.color = palette[Math.floor(Math.random() * palette.length)];
+    
+    // Upward explosion velocity vectors
+    this.vx = (Math.random() - 0.5) * 12;
+    this.vy = (Math.random() * -10) - 4;
+    this.gravity = 0.4;
+    this.alpha = 1;
+    this.decay = Math.random() * 0.02 + 0.015;
+  }
+
+  update() {
+    this.x += this.vx;
+    this.vy += this.gravity;
+    this.y += this.vy;
+    this.alpha -= this.decay;
+  }
+
+  draw() {
+    ctx.fillStyle = this.color;
+    ctx.globalAlpha = this.alpha;
+    // Render sharp rectangles instead of soft circles
+    ctx.fillRect(this.x, this.y, this.size, this.size); 
+  }
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles = particles.filter(p => p.alpha > 0);
+  particles.forEach(p => {
+    p.update();
+    p.draw();
+  });
+  if (particles.length > 0) {
+    requestAnimationFrame(animateParticles);
+  }
+}
+
+function triggerGameEffects(event, element) {
+  event.preventDefault(); // Pause immediate native redirect to let animations play
+  const destination = element.href;
+  
+  // Trigger Screen Shake on main body grid
+  const mainHub = document.querySelector('.involvement-hub');
+  mainHub.classList.add('screen-shake-active');
+  setTimeout(() => mainHub.classList.remove('screen-shake-active'), 300);
+
+  // Spawn retro pixel particle explosion at cursor coordinates
+  for (let i = 0; i < 45; i++) {
+    particles.push(new PixelParticle(event.clientX, event.clientY));
+  }
+  animateParticles();
+
+  // Redirect to link after game effects terminate
+  setTimeout(() => {
+    window.location.href = destination;
+  }, 450);
+}
+</script>
+
+</head>
+<body>
+
+<div id="global-header"></div>
+
+<section class="page-banner">
+  <h1>JOIN THE COMMUNITY</h1>
+  <p class="subtitle">Ways to connect with UCF's game dev community</p>
+</section>
+
+<main class="involvement-hub">
+  <div class="hub-container">
+    
+    <section class="hub-card">
+      <div class="step-number">01</div>
+      <div class="hub-content">
+        <h2>JOIN OUR DISCORD</h2>
+        <p>Our primary digital headquarters. Chat with peers, get feedback on your builds, share resources, and stay updated on daily club announcements.</p>
+        <a href="https://discord.gg/WgPk4Tp8Cg" class="hub-btn discord-color" target="_blank">ENTER SERVER</a>
+      </div>
+    </section>
+
+    <section class="hub-card">
+      <div class="step-number">02</div>
+      <div class="hub-content">
+        <h2>REGISTER ON KNIGHTCONNECT</h2>
+        <p>Official UCF student organization tracking. Joining our roster here ensures you are recognized as an official club entity for university administration and event attendance.</p>
+        <a href="https://knightconnect.campuslabs.com/engage/organization/gamedevknights" class="hub-btn default-color" target="_blank">JOIN ROSTER</a>
+      </div>
+    </section>
+
+    <section class="hub-card">
+      <div class="step-number">03</div>
+      <div class="hub-content">
+        <h2>FOLLOW OUR SOCIALS</h2>
+        <p>Don't miss a beat. We post student workshops, guest speaker panels, game jam galleries, and studio tour updates across our feeds. 
+          Connect with us on <a href="https://instagram.com/your-handle" target="_blank">Instagram</a> and <a href="https://linkedin.com/company/your-page" target="_blank">LinkedIn</a> to stay tuned for upcoming events and industry opportunities.</p>
+      </div>
+    </section>
+
+    <hr class="hub-divider">
+
+    <section class="hub-card premium-card">
+      <div class="step-number premium-text">04</div>
+      <div class="hub-content">
+        <h2 class="premium-text">BECOME A PAID MEMBER</h2>
+        <b><p>Becoming a paid member is <em>never</em> required to be a part of our community.</p></b>
+          <p>All students are welcome to attend our meetings, participate in community game jams, the project program, and hang out in the Discord.</p> 
+          <p>... however, being a paid member does come with some advantages! Mainly, access to our mentorship program and being eligible to go to GDC with us in the spring. Also, GDK swag!</p>
+        
+        <div class="tier-comparison-box">
+          <div class="tier-column">
+            <h4 class="tier-title free-title">FREE MEMBER</h4>
+            <ul class="tier-features">
+              <li class="feature-included">General Body Meetings</li>
+              <li class="feature-included">Social Events</li>
+              <li class="feature-included">All Workshops & Speaker Events</li>
+              <li class="feature-included">Discord Community Access</li>
+              <li class="feature-included">Participate in Project Program</li>
+              <li class="feature-included">Participate in Game Jams</li>
+            </ul>
+          </div>
+          
+          <div class="tier-column paid-highlight">
+            <h4 class="tier-title paid-title">PAID MEMBER PERKS</h4>
+            <ul class="tier-features">
+              <li class="feature-premium">Official GDK Club Swag</li>
+              <li class="feature-premium">Little-Big Mentorship Program</li>
+              <li class="feature-premium">Career Fair Skip-the-Line Priority</li>
+              <li class="feature-premium">Annual GDC Trip Eligibility</li>
+              <li class="feature-premium">we can buy more pizza! </li>
+            </ul>
+          </div>
+        </div>
+        
+<div class="payment-action-row">
+  <a href="https://your-payment-provider.com/fall" class="payment-node" onclick="triggerGameEffects(event, this)" target="_blank">
+    <span class="node-label">FALL SEMESTER</span>
+    <span class="node-cost">$15</span>
+    <span class="node-cta">PAY DUES</span>
+  </a>
+
+  <a href="https://buy.stripe.com/test_00weVecOq4333Ddd3r5Vu02" class="payment-node" onclick="triggerGameEffects(event, this)" target="_blank">
+    <span class="node-label">SPRING SEMESTER</span>
+    <span class="node-cost">$15</span>
+    <span class="node-cta">PAY DUES</span>
+  </a>
+  
+  <a href="https://buy.stripe.com/test_bJebJ215IeHH0r19Rf5Vu01" class="payment-node popular-node" onclick="triggerGameEffects(event, this)" target="_blank">
+    <span class="node-label">FULL ACADEMIC YEAR</span>
+    <span class="node-cost">$25</span>
+    <span class="node-cta">PAY DUES</span>
+  </a>
+</div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<div id="global-footer"></div>
+
+
+</body>
+</html>
