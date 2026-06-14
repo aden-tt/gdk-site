@@ -64,10 +64,10 @@ function renderFooter() {
       <div class="footer-right">
         <p><b>Socials</b></p>
         <ul>
-          <li><a href="#">Discord</a></li>
-          <li><a href="#">LinkedIn</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">KnightConnect</a></li>
+          <li><a href="https://discord.gg/WgPk4Tp8Cg">Discord</a></li>
+          <li><a href="https://www.linkedin.com/company/game-development-knights/">LinkedIn</a></li>
+          <li><a href="https://www.instagram.com/gamedevknights/">Instagram</a></li>
+          <li><a href="https://knightconnect.campuslabs.com/engage/organization/gamedevknights">KnightConnect</a></li>
         </ul>
       </div>
     </footer>
