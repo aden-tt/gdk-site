@@ -15,16 +15,26 @@
 <link href="https://events.ucf.edu/tools/style.css" rel="stylesheet" type="text/css">
 
 <script src="js/components.js" defer></script>
+<script src="js/config-engine.js" defer></script>
 </head>
 <body>
 
 <div id="global-header"></div>
 
 <section class="hero">
-  <img class="hero-logo" src="images/hero-logo.png" alt="GDK Logo">
-  <h1>WELCOME TO GDK!</h1>
-  <p class="subtitle">University of Central Florida's official game development club</p>
-  <button class="hero-cta" onclick="location.href='about.html'" type="button">ABOUT US</button>
+  <div class="hero-video-overlay"></div>
+
+  <video class="hero-video-bg" autoplay loop muted playsinline>
+    <source src="https://fiea.ucf.edu/wp-content/uploads/sites/53/2025/03/hero_frontpage-1.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="hero-content">
+    <img class="hero-logo" src="images/hero-logo.png" alt="GDK Logo">
+    <h1>WELCOME TO GDK!</h1>
+    <p class="subtitle">University of Central Florida's official game development club</p>
+    <button class="hero-cta" onclick="location.href='about.html'" type="button">ABOUT US</button>
+  </div>
 </section>
 
 <section class="about">
@@ -47,70 +57,84 @@
   </div>
 </section>
 
-<section class="discord-events">
-  <div class="discord-col">
+<section class="community-events">
+  <div class="cta-col">
     <div class="get-involved-cta">
       <p class="get-involved-tagline">Ready to level up?</p>
       <p>Whether you're a seasoned dev or just picking up your first engine, there's a place for you in GDK. Join our Discord, pay dues, and unlock the full experience.</p>
-      <a href="get-involved.html" class="get-involved-btn" style="align-self: center;">JOIN THE COMMUNITY</a>
+      <a href="get-involved.html" class="get-involved-btn">JOIN THE COMMUNITY</a>
     </div>
   </div>
   <div class="events-col">
     <h2>UPCOMING EVENTS</h2>
     <div class="events-embed">
       <div class="events" data-calendar-id="7151" data-limit="6">
-        <a href="https://events.ucf.edu/">View Calendar</a>
+        <a href="https://events.ucf.edu/" target="_blank">View Calendar</a>
       </div>
     </div>
   </div>
 </section>
-
+<!--
 <section class="sponsors">
-  <h2>OUR SPONSORS</h2>
-  <img class="sponsor-strip" src="images/sponsors.png" alt="Our sponsors">
-  <p class="sponsor-text">
-    Our sponsors help us blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.<br>
-    Interested in becoming a sponsor of GDK? <a href="#">Contact us</a> to learn more.
-  </p>
+  <div class="sponsors-inner">
+    <h2>OUR SPONSORS</h2>
+    <div class="sponsor-strip-wrapper">
+      <img class="sponsor-strip" src="images/sponsors.png" alt="Our sponsors">
+    </div>
+    <p class="sponsor-text">
+      Our sponsors help us blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.<br>
+      Interested in becoming a sponsor of GDK? <a href="#">Contact us</a> to learn more.
+    </p>
+  </div>
 </section>
+-->
+<section class="what-we-do-grid">
+  <h2>WHAT WE DO</h2>
+  
+  <div class="grid-container">
+    <div class="grid-card">
+      <h3>Meetings</h3>
+      <p>Kick back, play some games, and hang out with an awesome community of students who share your passion for game creation.</p>
+    </div>
 
-<section class="programs">
-  <h2>PROGRAMS</h2>
+    <div class="grid-card">
+      <h3>Socials</h3>
+      <p>Kick back, play some games, and hang out with an awesome community of students who share your passion for game creation.</p>
+    </div>
 
-  <div class="program-card">
-    <img class="program-image" src="images/program-mentorship.jpg" alt="Little Big Mentorship Program">
-    <div class="program-text">
-      <h3>LITTLE BIG MENTORSHIP PROGRAM</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <button class="learn-more">LEARN MORE</button>
+    <div class="grid-card">
+      <h3>Workshops</h3>
+      <p>Level up your programming, game design, and digital art skills with hands-on, student-led technical tutorials.</p>
+    </div>
+    
+    <div class="grid-card">
+      <h3>Game Jams</h3>
+      <p>Race against the clock to design, develop, and polish unique games alongside fellow club members during weekend-long marathons.</p>
+    </div>
+
+    <div class="grid-card">
+      <h3>Team Projects</h3>
+      <p>Collaborate in multi-disciplinary teams over the semester to build larger, portfolio-ready game projects from scratch.</p>
+    </div>
+
+    <div class="grid-card">
+      <h3>Mentorship</h3>
+      <p>Get paired up with experienced upperclassmen or club veterans who will guide your portfolio growth, project workflow, and skills.</p>
+    </div>
+
+    <div class="grid-card">
+      <h3>GDC Trip</h3>
+      <p>Join club cohorts traveling to the Game Developers Conference to network, learn, and experience the industry on a massive scale.</p>
+    </div>
+
+    <div class="grid-card">
+      <h3>Career Fair</h3>
+      <p>Connect directly with local studios, recruiters, and alumni looking for fresh talent at our student-focused networking events.</p>
     </div>
   </div>
 
-  <div class="program-card">
-    <img class="program-image" src="images/program-project.jpg" alt="Project Program">
-    <div class="program-text">
-      <h3>PROJECT PROGRAM</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <button class="learn-more">LEARN MORE</button>
-    </div>
-  </div>
-
-  <div class="program-card">
-    <img class="program-image" src="images/program-gdc.jpg" alt="Game Developers Conference">
-    <div class="program-text">
-      <h3>GAME DEVELOPERS CONFERENCE</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <button class="learn-more">LEARN MORE</button>
-    </div>
-  </div>
-
-  <div class="program-card">
-    <img class="program-image" src="images/program-career-fair.jpg" alt="Spring Career Fair">
-    <div class="program-text">
-      <h3>SPRING CAREER FAIR</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <button class="learn-more">LEARN MORE</button>
-    </div>
+  <div class="grid-cta-wrapper">
+    <button class="hero-cta" onclick="location.href='programs.html'" type="button">LEARN MORE →</button>
   </div>
 </section>
 

@@ -1,67 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Programs | GameDev Knights</title>
-<link rel="icon" type="image/png" href="images/icon-logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programs & Events | GameDev Knights</title>
+  <link rel="icon" type="image/png" href="images/icon-logo.png">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Jaro&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<script src="js/components.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Jaro&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="js/components.js" defer></script>
+  <script src="js/config-engine.js" defer></script>
 </head>
 <body>
 
 <div id="global-header"></div>
 
-
-    <button class="menu-toggle-btn" aria-label="Toggle Menu" onclick="document.querySelector('.navbar-container').classList.toggle('open')">
-      <span class="btn-label">MENU</span>
-      <div class="burger-icon">
-        <span></span><span></span><span></span>
-      </div>
-    </button>
-  </div>
-</header>
-
 <section class="page-banner">
-  <h1>PAGE HEADER HERE</h1>
-  <p class="subtitle">Optional sub-phrase describing this view</p>
+  <h1>PROGRAMS & EVENTS</h1>
+  <p class="subtitle">Frameworks, platforms, and guidelines for Knights</p>
 </section>
-
 <main class="inner-page-container">
+
+<section class="community-events">
   <div class="content-wrapper">
-    
-    <article class="primary-content">
-      <h2>Section Heading</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      
-      <div class="retro-box-callout">
-        <h3>Important Note / Alert Box</h3>
-        <p>This panel uses your established styling language to isolate key text fields or resource links for club members.</p>
+    <div class="primary-content">
+
+      <div class="universal-carousel" 
+           data-autoplay="true" 
+           data-interval="4000"
+           data-slides='[
+             {"src": "images/about-gallery-1.jpg", "alt": "Club workshop demonstration"},
+             {"src": "images/about-gallery-2.jpg", "alt": "Collaborative game jam lab"},
+              {"src": "images/about-gallery-2.jpg", "alt": "Collaborative game jam lab"}
+           ]'
+           style="height: 450px; width: 800; margin: 2rem 0; border: 4px solid var(--dark); background: var(--dark-gray);">
       </div>
 
-      <h2>Sub-Section Title</h2>
-      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    </article>
+        <h2>Game Jams</h2>
+      <p>Welcome to the collective hub for game creation! Whether you are a total newcomer drafting your very first mechanic or a seasoned developer optimizing a runtime custom pipeline, you can use these frameworks, platforms, and guidelines to smooth your workflow.</p>
+      <ul>
+        <li>Workshops</li>
+        <li>Socials</li>
+        <li>General Body Meetings (GBM)</li>
+        <li>Industry Panels</li>
+      </ul>
 
-    <aside class="sidebar-content">
-      <div class="sidebar-card">
-        <h3>QUICK LINKS</h3>
-        <ul class="sidebar-links">
-          <li><a href="#">Link Item One &rarr;</a></li>
-          <li><a href="#">Link Item Two &rarr;</a></li>
-          <li><a href="#">Link Item Three &rarr;</a></li>
-        </ul>
-      </div>
-    </aside>
+      <h2>Game Jams</h2>
+      <p>Welcome to the collective hub for game creation! Whether you are a total newcomer drafting your very first mechanic or a seasoned developer optimizing a runtime custom pipeline, you can use these frameworks, platforms, and guidelines to smooth your workflow.</p>
+      <p>Welcome to the collective hub for game creation! Whether you are a total newcomer drafting your very first mechanic or a seasoned developer optimizing a runtime custom pipeline, you can use these frameworks, platforms, and guidelines to smooth your workflow.</p>
 
+    </div>
   </div>
+</section>
 </main>
 
-<div id="global-footer"></div>
+<section class="programs">
+  <h2>PROGRAMS</h2>
 
+  <div class="program-card">
+    <img class="program-image" src="images/program-mentorship.jpg" alt="Little Big Mentorship Program">
+    <div class="program-text">
+      <h3>LITTLE BIG MENTORSHIP PROGRAM</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <button class="learn-more" onclick="location.href='little-big-mentorship.html'" >LEARN MORE →</button>
+    </div>
+  </div>
+
+  <div class="program-card">
+    <img class="program-image" src="images/program-project.jpg" alt="Project Program">
+    <div class="program-text">
+      <h3>PROJECT PROGRAM</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <button class="learn-more" onclick="location.href='project-program.html'" >LEARN MORE →</button>
+    </div>
+  </div>
+
+  <div class="program-card">
+    <img class="program-image" src="images/program-gdc.jpg" alt="Game Developers Conference">
+    <div class="program-text">
+      <h3>GAME DEVELOPERS CONFERENCE</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <button class="learn-more" onclick="location.href='gdc-trip.html'" >LEARN MORE →</button>
+    </div>
+  </div>
+
+  <div class="program-card">
+    <img class="program-image" src="images/program-career-fair.jpg" alt="Spring Career Fair">
+    <div class="program-text">
+      <h3>SPRING CAREER FAIR</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <button class="learn-more" onclick="location.href='downtown-career-fair.html'" >LEARN MORE →</button>
+    </div>
+  </div>
+</section>
+
+<div id="global-footer"></div>
 
 </body>
 </html>

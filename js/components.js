@@ -20,20 +20,24 @@ function renderHeader() {
         <nav class="nav-links-desktop">
           <a href="index.html" class="nav-item">HOME</a>
           <a href="about.html" class="nav-item">ABOUT</a>
-          
           <div class="nav-dropdown-wrapper">
-            <a href="programs.html" class="nav-item">PROGRAMS <span class="dropdown-arrow">▼</span></a>
+            <a href="programs.html" class="nav-item">PROGRAMS / EVENTS<span class="dropdown-arrow">▼</span></a>
             <div class="arcade-dropdown">
-              <a href="little-big-mentorship.html" class="dropdown-sub-item">LB Mentorship</a>
               <a href="project-program.html" class="dropdown-sub-item">Project Program</a>
               <a href="gdc-trip.html" class="dropdown-sub-item">GDC Trip</a>
-              <a href="downtown-career-fair.html" class="dropdown-sub-item">Career Fair</a>
+              <a href="little-big-mentorship.html" class="dropdown-sub-item">Little Big Mentorship</a>
+              <a href="downtown-career-fair.html" class="dropdown-sub-item">Downtown Career Fair</a>
             </div>
           </div>
 
-          <a href="get-involved.html" class="nav-item">MEMBERSHIP</a>
-          <a href="faq.html" class="nav-item">FAQ</a>
           <a href="resources.html" class="nav-item">RESOURCES</a>
+          <a href="faq.html" class="nav-item">FAQ</a>
+          <div class="nav-dropdown-wrapper">
+            <a href="get-involved.html" class="nav-item">GET INVOLVED!<span class="dropdown-arrow">▼</span></a>
+            <div class="arcade-dropdown">
+              <a href="alumni-network.html" class="dropdown-sub-item">Alumni Network</a>
+            </div>
+          </div>
           <a href="contact.html" class="nav-item">CONTACT</a>
         </nav>
 
@@ -228,4 +232,79 @@ function initUniversalAccordions() {
       });
     });
   });
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  // ... Keep existing initialization hooks (Header, Footer, Accordions, etc.)
+  
+  initContactForm();
+});
+
+function initContactForm() {
+  const form = document.getElementById("contact-form");
+  if (!form) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault(); // Prevents browser redirect page refresh
+
+    const data = new FormData(form);
+    const submitBtn = form.querySelector(".form-submit-btn");
+    
+    // Visual feedback state during transit
+    if (submitBtn) submitBtn.innerText = "TRANSMITTING...";
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        form.reset(); // Wipe inputs clean
+        triggerAchievement("ACHIEVEMENT UNLOCKED", "Message sent successfully!");
+      } else {
+        throw new Error("Formspree server error rejection response");
+      }
+    } catch (error) {
+      triggerAchievement("TRANSMISSION ERROR", "Failed to connect. Use Discord instead.", true);
+    } finally {
+      if (submitBtn) submitBtn.innerText = "SEND MESSAGE";
+    }
+  });
+}
+
+function triggerAchievement(title, subtitle, isError = false) {
+  const container = document.getElementById("achievement-toast-container");
+  if (!container) return;
+
+  // Create individual notification token
+  const toast = document.createElement("div");
+  toast.className = "achievement-toast";
+  
+  // Custom logic to alter icon presentation based on payload status
+  const iconSymbol = isError ? "⚠" : "🏆";
+  if (isError) toast.style.borderColor = "#ff5555";
+
+  toast.innerHTML = `
+    <div class="achievement-icon">${iconSymbol}</div>
+    <div class="achievement-details">
+      <h4>${title}</h4>
+      <p>${subtitle}</p>
+    </div>
+  `;
+
+  container.appendChild(toast);
+
+  // Force reflow for CSS execution slide trigger
+  setTimeout(() => toast.classList.add("show"), 50);
+
+  // Cleanup: Slide out and purge DOM node completely
+  setTimeout(() => {
+    toast.classList.remove("show");
+    setTimeout(() => toast.remove(), 400);
+  }, 4000);
 }

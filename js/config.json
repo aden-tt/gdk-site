@@ -1,0 +1,22 @@
+{
+  "deadlines": {
+    "mentorship_application": "TBD",
+    "volunteer_staff_application": "TBD",
+    "gdk_event_target": "TBD"
+  },
+  "links": {
+    "mentor_form": "https://google.com",
+    "mentee_form": "https://google.com"
+  },
+  "events": {
+    "career_fair": {
+      "date": "TBD",
+      "time": "TBD",
+      "location": "TBD"
+    }
+  },
+  "announcements": {
+    "banner_text": "Fall 2026 Applications are now open!",
+    "show_banner": true
+  }
+}

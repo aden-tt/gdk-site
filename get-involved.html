@@ -3,95 +3,97 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Membership | GameDev Knights</title>
+<title>Get Involved | GameDev Knights</title>
 <link rel="icon" type="image/png" href="images/icon-logo.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Jaro&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<script src="js/components.js" defer></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+<script src="js/components.js" defer></script>
+<script src="js/config-engine.js" defer></script>
 </head>
 
 <canvas id="fx-canvas-overlay"></canvas>
 
 <script>
-const canvas = document.getElementById('fx-canvas-overlay');
-const ctx = canvas.getContext('2d');
-let particles = [];
+    const canvas = document.getElementById('fx-canvas-overlay');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
 
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
 
-class PixelParticle {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-    // Square/blocky sizes matching retro motif
-    this.size = Math.floor(Math.random() * 6) + 4; 
-    // High-contrast club theme colors
-    const palette = ['#FFCC00', '#FFFFFF', '#141414', '#8c9bb8', '#ff4757'];
-    this.color = palette[Math.floor(Math.random() * palette.length)];
-    
-    // Upward explosion velocity vectors
-    this.vx = (Math.random() - 0.5) * 12;
-    this.vy = (Math.random() * -10) - 4;
-    this.gravity = 0.4;
-    this.alpha = 1;
-    this.decay = Math.random() * 0.02 + 0.015;
-  }
+    class PixelParticle {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        // Square/blocky sizes matching retro motif
+        this.size = Math.floor(Math.random() * 6) + 4; 
+        // High-contrast club theme colors
+        const palette = ['#FFCC00', '#FFFFFF', '#141414', '#8c9bb8', '#ff4757'];
+        this.color = palette[Math.floor(Math.random() * palette.length)];
+        
+        // Upward explosion velocity vectors
+        this.vx = (Math.random() - 0.5) * 12;
+        this.vy = (Math.random() * -10) - 4;
+        this.gravity = 0.4;
+        this.alpha = 1;
+        this.decay = Math.random() * 0.02 + 0.015;
+      }
 
-  update() {
-    this.x += this.vx;
-    this.vy += this.gravity;
-    this.y += this.vy;
-    this.alpha -= this.decay;
-  }
+      update() {
+        this.x += this.vx;
+        this.vy += this.gravity;
+        this.y += this.vy;
+        this.alpha -= this.decay;
+      }
 
-  draw() {
-    ctx.fillStyle = this.color;
-    ctx.globalAlpha = this.alpha;
-    // Render sharp rectangles instead of soft circles
-    ctx.fillRect(this.x, this.y, this.size, this.size); 
-  }
-}
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.globalAlpha = this.alpha;
+        // Render sharp rectangles instead of soft circles
+        ctx.fillRect(this.x, this.y, this.size, this.size); 
+      }
+    }
 
-function animateParticles() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles = particles.filter(p => p.alpha > 0);
-  particles.forEach(p => {
-    p.update();
-    p.draw();
-  });
-  if (particles.length > 0) {
-    requestAnimationFrame(animateParticles);
-  }
-}
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles = particles.filter(p => p.alpha > 0);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      if (particles.length > 0) {
+        requestAnimationFrame(animateParticles);
+      }
+    }
 
-function triggerGameEffects(event, element) {
-  event.preventDefault(); // Pause immediate native redirect to let animations play
-  const destination = element.href;
-  
-  // Trigger Screen Shake on main body grid
-  const mainHub = document.querySelector('.involvement-hub');
-  mainHub.classList.add('screen-shake-active');
-  setTimeout(() => mainHub.classList.remove('screen-shake-active'), 300);
+    function triggerGameEffects(event, element) {
+      event.preventDefault(); // Pause immediate native redirect to let animations play
+      const destination = element.href;
+      
+      // Trigger Screen Shake on main body grid
+      const mainHub = document.querySelector('.involvement-hub');
+      mainHub.classList.add('screen-shake-active');
+      setTimeout(() => mainHub.classList.remove('screen-shake-active'), 300);
 
-  // Spawn retro pixel particle explosion at cursor coordinates
-  for (let i = 0; i < 45; i++) {
-    particles.push(new PixelParticle(event.clientX, event.clientY));
-  }
-  animateParticles();
+      // Spawn retro pixel particle explosion at cursor coordinates
+      for (let i = 0; i < 45; i++) {
+        particles.push(new PixelParticle(event.clientX, event.clientY));
+      }
+      animateParticles();
 
-  // Redirect to link after game effects terminate
-  setTimeout(() => {
-    window.location.href = destination;
-  }, 450);
-}
+      // Redirect to link after game effects terminate
+      setTimeout(() => {
+        window.location.href = destination;
+      }, 450);
+    }
 </script>
 
 </head>
@@ -100,7 +102,7 @@ function triggerGameEffects(event, element) {
 <div id="global-header"></div>
 
 <section class="page-banner">
-  <h1>JOIN THE COMMUNITY</h1>
+  <h1>GET INVOLVED</h1>
   <p class="subtitle">Ways to connect with UCF's game dev community</p>
 </section>
 
@@ -136,13 +138,19 @@ function triggerGameEffects(event, element) {
 
     <hr class="hub-divider">
 
-    <section class="hub-card premium-card">
+    <section class="hub-card premium-card" id="paid-membership">
       <div class="step-number premium-text">04</div>
       <div class="hub-content">
-        <h2 class="premium-text">BECOME A PAID MEMBER</h2>
+        <h2 class="premium-text">
+          BECOME A PAID MEMBER 
+          <a href="#paid-membership" class="header-anchor" aria-label="Permalink to this section" style="font-size: 1.3rem; text-decoration: none; opacity: 50%; color: var(--yellow);">
+            <i class="fa-solid fa-link"></i>
+          </a>
+        </h2>
+        
         <b><p>Note: Becoming a paid member is <u>NOT</u> required to be a part of our community.</p></b>
           <p>All students are welcome to attend our meetings, participate in community game jams, the project program, and hang out in the Discord — free of charge.</p> 
-          <p>... however, being a paid member does come with some cool perks! Mainly, access to our mentorship program and being eligible to go to GDC with us in the spring. By supporting the club, you give us the ability to run bigger and better events and programs for our community. Did we mention official GDK swag?</p>
+          <p>... however, being a paid member does come with <em>some</em> cool perks! Mainly, access to our mentorship program and being eligible to go to GDC with us in the spring. By supporting the club, you give us the ability to run bigger and better events and programs for our community. Did we mention official GDK swag?</p>
         
         <div class="tier-comparison-box">
           <div class="tier-column">
@@ -169,25 +177,39 @@ function triggerGameEffects(event, element) {
           </div>
         </div>
         
-<div class="payment-action-row">
-  <a href="https://your-payment-provider.com/fall" class="payment-node" onclick="triggerGameEffects(event, this)" target="_blank">
-    <span class="node-label">FALL SEMESTER</span>
-    <span class="node-cost">$15</span>
-    <span class="node-cta">PAY DUES</span>
-  </a>
+        <div class="payment-action-row">
+          <a href="https://your-payment-provider.com/fall" class="payment-node" onclick="triggerGameEffects(event, this)" target="_blank">
+            <span class="node-label">FALL SEMESTER</span>
+            <span class="node-cost">$15</span>
+            <span class="node-cta">PAY DUES</span>
+          </a>
 
-  <a href="https://buy.stripe.com/test_00weVecOq4333Ddd3r5Vu02" class="payment-node" onclick="triggerGameEffects(event, this)" target="_blank">
-    <span class="node-label">SPRING SEMESTER</span>
-    <span class="node-cost">$15</span>
-    <span class="node-cta">PAY DUES</span>
-  </a>
-  
-  <a href="https://buy.stripe.com/test_bJebJ215IeHH0r19Rf5Vu01" class="payment-node popular-node" onclick="triggerGameEffects(event, this)" target="_blank">
-    <span class="node-label">FULL ACADEMIC YEAR</span>
-    <span class="node-cost">$25</span>
-    <span class="node-cta">PAY DUES</span>
-  </a>
-</div>
+          <a href="https://buy.stripe.com/test_00weVecOq4333Ddd3r5Vu02" class="payment-node" onclick="triggerGameEffects(event, this)" target="_blank">
+            <span class="node-label">SPRING SEMESTER</span>
+            <span class="node-cost">$15</span>
+            <span class="node-cta">PAY DUES</span>
+          </a>
+          
+          <a href="https://buy.stripe.com/test_bJebJ215IeHH0r19Rf5Vu01" class="payment-node popular-node" onclick="triggerGameEffects(event, this)" target="_blank">
+            <span class="node-label">FULL ACADEMIC YEAR</span>
+            <span class="node-cost">$25</span>
+            <span class="node-cta">PAY DUES</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hub-divider">
+
+    <section class="hub-card volunteer-staff-card" id="volunteer-staff">
+      <div class="step-number staff-accent-text">05</div>
+      <div class="hub-content">
+        <h2 class="staff-accent-text">VOLUNTEER STAFFING PROGRAM</h2>
+        <p>GDK is built completely by students, for students. If you want to contribute to the pipeline without running for an executive officer seat, our volunteer staff positions are open throughout the academic year. No prior organizational background is required!</p>
+
+        <p style="margin-top: 1.5rem;"><strong>Ready to enlist?</strong> We review crew applications at the beginning of each semester and pull extra help during major game jam cycles.</p>
+        
+        <a href="#" class="hub-btn staff-btn-color">APPLY FOR STAFF CREW</a>
       </div>
     </section>
 
