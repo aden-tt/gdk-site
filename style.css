@@ -1366,7 +1366,7 @@ main img, .gallery-item img, .program-card img {
       );
       transform: skewX(-25deg);
       z-index: 1;
-      animation: button-shine 5s infinite ease-in-out;
+      animation: button-shine 4s infinite ease-in-out;
     }
 
     @keyframes button-shine {
