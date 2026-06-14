@@ -27,6 +27,62 @@ h1, h2, h3, .nav-title {
   letter-spacing: 1px;
 }
 
+h5 {
+  font-family: 'Readex Pro', sans-serif;
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+}
+
+/* Reusable Accordion Component Component UI */
+/* Reusable Accordion Component UI Architecture */
+.universal-accordion-group {
+  margin-bottom: 1.5rem;
+}
+
+.universal-accordion-node {
+  border-bottom: 2px solid var(--dark);
+  margin-bottom: 0.5rem;
+}
+
+.accordion-trigger {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 1rem 0;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  outline: none;
+}
+
+.accordion-trigger h5 {
+  margin: 0;
+  color: inherit;
+}
+
+.accordion-icon {
+  font-size: 1.2rem;
+  color: var(--dark);
+  transition: transform 0.2s ease-out; /* Smooth arrow rotation added */
+}
+
+/* Open States */
+.universal-accordion-node.active .accordion-icon {
+  transform: rotate(180deg);
+}
+
+.accordion-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease-out;
+}
+
+.accordion-panel-content {
+  padding-bottom: 1.2rem;
+}
+
 /* NAVBAR */
 .navbar-container {
   position: sticky;

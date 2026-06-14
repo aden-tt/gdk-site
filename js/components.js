@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
   renderHeader();
   renderFooter();
   setActiveNavbarLink();
+  initUniversalCarousels();
+  initUniversalAccordions();
 });
 
 function renderHeader() {
@@ -29,7 +31,7 @@ function renderHeader() {
             </div>
           </div>
 
-          <a href="get-involved.html" class="nav-item">GET INVOLVED!</a>
+          <a href="get-involved.html" class="nav-item">MEMBERSHIP</a>
           <a href="faq.html" class="nav-item">FAQ</a>
           <a href="resources.html" class="nav-item">RESOURCES</a>
           <a href="contact.html" class="nav-item">CONTACT</a>
@@ -83,8 +85,6 @@ function setActiveNavbarLink() {
 
   navItems.forEach(item => {
     const href = item.getAttribute("href");
-    
-    // Check if the current URL ends with the link href attribute
     if (href && (currentPath.endsWith(href) || (href === "index.html" && (currentPath.endsWith("/") || currentPath === "")))) {
       item.classList.add("active");
     } else {
@@ -93,22 +93,10 @@ function setActiveNavbarLink() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  renderHeader();
-  renderFooter();
-  setActiveNavbarLink();
-  
-  // Initialize any universal carousels on the page
-  initUniversalCarousels();
-});
-
-// ... keep your existing renderHeader, renderFooter, and setActiveNavbarLink functions ...
-
 function initUniversalCarousels() {
   const carousels = document.querySelectorAll('.universal-carousel');
   
   carousels.forEach(carousel => {
-    // 1. Extract slide data encoded in the HTML attribute
     let slidesData = [];
     try {
       slidesData = JSON.parse(carousel.getAttribute('data-slides') || '[]');
@@ -119,14 +107,12 @@ function initUniversalCarousels() {
     
     if (slidesData.length === 0) return;
 
-    // 2. Inject the Carousel HTML Structure
     let slidesHTML = '';
     let dotsHTML = '';
     
     slidesData.forEach((slide, index) => {
       const activeClass = index === 0 ? 'active' : '';
       
-      // Handle both standard images and YouTube video IFrames dynamically
       if (slide.type === 'video') {
         slidesHTML += `
           <div class="carousel-slide carousel-slide--video">
@@ -153,7 +139,6 @@ function initUniversalCarousels() {
       <div class="carousel-dots">${dotsHTML}</div>
     `;
 
-    // 3. Setup Slide Mechanics & Controls
     const track = carousel.querySelector('.carousel-track');
     const dots = carousel.querySelectorAll('.dot');
     const totalSlides = slidesData.length;
@@ -167,7 +152,6 @@ function initUniversalCarousels() {
       dots[currentIndex].classList.add('active');
     }
 
-    // Event Listeners
     carousel.querySelector('.carousel-btn.prev').addEventListener('click', () => updateCarousel(currentIndex - 1));
     carousel.querySelector('.carousel-btn.next').addEventListener('click', () => updateCarousel(currentIndex + 1));
     
@@ -178,9 +162,70 @@ function initUniversalCarousels() {
       });
     });
 
-    // Auto-rotation (only if data-autoplay isn't explicitly set to "false")
     if (carousel.getAttribute('data-autoplay') !== 'false') {
       setInterval(() => updateCarousel(currentIndex + 1), intervalTime);
     }
+  });
+}
+function initUniversalAccordions() {
+  const groups = document.querySelectorAll('.universal-accordion-group');
+
+  groups.forEach(group => {
+    // 1. Parse encoded item data string securely
+    let itemsData = [];
+    try {
+      itemsData = JSON.parse(group.getAttribute('data-items') || '[]');
+    } catch (e) {
+      console.error("Malformed JSON string inside accordion data-items attribute", e);
+      return;
+    }
+
+    // 2. Generate and inject DOM nodes programmatically
+    group.innerHTML = itemsData.map(item => `
+      <div class="universal-accordion-node">
+        <button class="accordion-trigger" aria-label="Toggle Answer">
+          <h5>${item.title}</h5>
+          <span class="accordion-icon">▼</span>
+        </button>
+        <div class="accordion-panel">
+          <div class="accordion-panel-content">
+            <p>${item.content}</p>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    // 3. Attach actionable click physics events to generated targets
+    const nodes = group.querySelectorAll('.universal-accordion-node');
+    const isExclusive = group.getAttribute('data-exclusive') === 'true';
+
+    nodes.forEach(node => {
+      const trigger = node.querySelector('.accordion-trigger');
+      const panel = node.querySelector('.accordion-panel');
+
+      if (!trigger || !panel) return;
+
+      trigger.addEventListener('click', () => {
+        const isActive = node.classList.contains('active');
+
+        // Handle exclusive mutual collapse states if active
+        if (isExclusive && !isActive) {
+          nodes.forEach(sibling => {
+            sibling.classList.remove('active');
+            const siblingPanel = sibling.querySelector('.accordion-panel');
+            if (siblingPanel) siblingPanel.style.maxHeight = '';
+          });
+        }
+
+        // Toggle active layouts
+        if (!isActive) {
+          node.classList.add('active');
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        } else {
+          node.classList.remove('active');
+          panel.style.maxHeight = '';
+        }
+      });
+    });
   });
 }
