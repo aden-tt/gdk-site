@@ -60,13 +60,13 @@
 <section class="community-events">
   <div class="cta-col">
     <div class="get-involved-cta">
-      <p class="get-involved-tagline">Ready to level up?</p>
-      <p>Whether you're a seasoned dev or just picking up your first engine, there's a place for you in GDK. Join our Discord, pay dues, and unlock the full experience.</p>
-      <a href="get-involved.html" class="get-involved-btn">JOIN THE COMMUNITY</a>
+      <p class="get-involved-tagline">JOIN THE COMMUNITY! ⚔️ </p>
+      <p>GDK is open to creators of all skill levels, backgrounds, and majors. If you love games and want to meet people who make them, you're in the right place. Check out our Get Involved page to learn how to become a member, or just join our Discord community and say hi!</p>
+      <a href="get-involved.html" class="get-involved-btn">ACCEPT INVITE</a>
     </div>
   </div>
   <div class="events-col">
-    <h2>UPCOMING EVENTS</h2>
+    <h2 style="text-align: center;">UPCOMING EVENTS</h2>
     <div class="events-embed">
       <div class="events" data-calendar-id="7151" data-limit="6">
         <a href="https://events.ucf.edu/" target="_blank">View Calendar</a>
@@ -139,6 +139,65 @@
 </section>
 
 <div id="global-footer"></div>
+<style>
+    .get-involved-btn {
+      position: relative;
+      overflow: hidden; /* Restricts the shine effect inside the button boundaries */
+      isolation: isolate; /* Ensures pseudo-elements stay layered properly */
+    }
+
+    /* 1. Periodic Shine Effect (Every 4 seconds) */
+    .get-involved-btn::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.7) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: skewX(-25deg);
+      z-index: 1;
+      animation: button-shine 5s infinite ease-in-out;
+    }
+
+    @keyframes button-shine {
+      0% { left: -150%; }
+      15% { left: 150%; } /* Fast sweep across the button */
+      100% { left: 150%; } /* Long pause before repeating */
+    }
+
+    /* 2. Interactive Game-y Hover Effect */
+    .get-involved-btn:hover {
+      background: #ffea2b; /* Flashes bright white/retro UI style */
+      color: #000000;
+      border-color: var(--yellow);
+      transform: translate(-2px, -2px); /* Pops outward visually */
+      box-shadow: 
+        6px 6px 0px #000000, 
+        0 0 15px rgba(255, 204, 0, 0.6); /* Adds an 8-bit neon bloom glow */
+      animation: critical-glitch 0.2s infinite; /* Retro shaking glitch feedback */
+    }
+
+    @keyframes critical-glitch {
+      0% { transform: translate(-2px, -2px); }
+      50% { transform: translate(-1px, -3px); }
+      100% { transform: translate(-3px, -1px); }
+    }
+
+    /* 3. High-Impact Press/Click Mechanic */
+    .get-involved-btn:active {
+      color: #000000 !important;
+      transform: translate(4px, 4px) scale(0.95) !important; /* Bottoms out into the page layout */
+      box-shadow: 0px 0px 0px #000000 !important; /* Completely removes shadow to indicate a bottomed-out key */
+      transition: all 0.05s ease;
+    }
+</style>
+
 
 <script>
   $(function(){ $(".events").eventsUCF(); });

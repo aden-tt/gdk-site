@@ -45,7 +45,10 @@ ul {
   padding-left: 1.5rem;
   list-style-position: inside;
 }
-
+ol {
+  padding-left: 1.5rem;
+  list-style-position: inside;
+}
 /* Universal Media Lightbox Pointer */
 main img, .gallery-item img, .program-card img {
   cursor: pointer;
@@ -1340,23 +1343,27 @@ main img, .gallery-item img, .program-card img {
 /* ==========================================================================
    8. SPECIALIZED THIRD-PARTY OVERRIDES (UCF WIDGET WARM-THEME RESTYLE)
    ========================================================================== */
+/* ==========================================================================
+   8. SPECIALIZED THIRD-PARTY OVERRIDES (UCF WIDGET WARM-THEME RESTYLE)
+   ========================================================================== */
 .events-embed {
-  background: #fff;
+  background: var(--dark); /* Switched to matching club dark theme */
   text-align: left;
-  padding: 0.8rem 1rem; /* Tighter outer box padding */
+  padding: 1rem; 
   border: 3px solid #000;
   box-shadow: 4px 4px 0px #000;
   border-radius: 4px;
 }
 
+/* Hide native widget header */
 .events-embed .events h4 {
   display: none !important;
 }
 
 .events-embed .events {
   font-family: 'Readex Pro', sans-serif !important;
-  font-size: 0.85rem !important; /* Slightly smaller base text */
-  color: #3a3a3a !important;
+  font-size: 0.85rem !important; 
+  color: var(--gray) !important; /* Standardized text color */
 }
 
 .events-embed .events table {
@@ -1364,77 +1371,88 @@ main img, .gallery-item img, .program-card img {
   border-collapse: collapse;
 }
 
+/* Force all table rows to be transparent and remove alternating row blocks */
+.events-embed .events tr,
 .events-embed .events tr.alt {
-  background: #faf6ce !important;
-}
-
-.events-embed .events th {
-  font-family: 'Readex Pro', sans-serif !important;
-  font-weight: 600 !important;
-  font-size: 0.65rem !important; /* Tighter header text */
-  text-transform: uppercase !important;
-  letter-spacing: 0.08em !important;
-  color: #888 !important;
   background: transparent !important;
-  border-bottom: 1px solid #ddddd8 !important;
-  padding: 0 0 0.3rem !important; /* Reduced header padding */
 }
 
+/* Tighter, stylized header row */
+.events-embed .events th {
+  font-family: 'Readex Pro', sans-serif !important; /* Switched to arcade heading font */
+  font-size: 1rem !important; 
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  color: var(--yellow) !important; /* Header pops in club color */
+  background: transparent !important;
+  border-bottom: 2px dashed rgba(255, 255, 255, 0.2) !important;
+  padding: 0 0 0.4rem 0 !important; 
+}
+
+/* Super tight layout structure */
 .events-embed .events td {
-  border-top: 1px solid #e5e5e0 !important;
-  padding: 0.4rem 0.3rem !important; /* Significantly reduced from 0.65rem */
-  vertical-align: middle !important; /* Center vertically to save perceived vertical space */
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  padding: 0.35rem 0.25rem !important; /* Extremely compressed spacing */
+  vertical-align: middle !important; 
 }
 
+/* Dynamic Date Box Badge */
 .events-embed .events abbr {
   font-family: 'Readex Pro', sans-serif !important;
-  font-weight: 500 !important;
-  font-size: 0.75rem !important; /* Slightly smaller date text */
-  color: #666 !important;
+  font-weight: 600 !important;
+  font-size: 0.75rem !important; 
+  color: #000 !important;
+  background: var(--blue-light); /* Makes dates scan easily */
+  padding: 2px 6px;
+  border-radius: 2px;
   text-decoration: none !important;
   white-space: nowrap;
 }
 
+/* Event Titles */
 .events-embed .events a.url {
   font-family: 'Readex Pro', sans-serif !important;
   font-weight: 500 !important;
-  color: #2a2a2a !important;
+  color: #ffffff !important;
   text-decoration: none !important;
-  line-height: 1.3 !important; /* Tighter text tracking */
+  line-height: 1.2 !important; 
 }
 
 .events-embed .events a.url:hover {
-  color: #7a6a00 !important;
+  color: var(--yellow) !important;
   text-decoration: underline !important;
 }
 
-.events-embed .events .location {
+/* Sub-locations text placement */
+.events-embed .events .location a {
   font-family: 'Readex Pro', sans-serif !important;
-  color: #999 !important;
-  font-size: 0.7rem !important; /* Smaller location font */
+  color: var(--gray) !important;
+  font-size: 0.7rem !important; 
   margin-top: 1px;
   display: block;
 }
 
+/* Tightened Footer Button */
 .events-embed .events a.more {
-  font-family: 'Readex Pro', sans-serif !important;
-  font-weight: 500 !important;
-  font-size: 0.75rem !important;
-  color: #eeeee9 !important;
-  background: #1d1d1d !important;
-  border: 0px solid #ddddd8 !important;
-  border-radius: 20px !important;
-  padding: 0.25rem 0.75rem !important; /* More compact button padding */
-  display: inline-block;
-  margin-top: 0.5rem !important; /* Reduced gap before the button */
-  letter-spacing: 0.02em;
+  display: block !important;
+  text-align: center;
+  font-family: 'Jaro', sans-serif !important;
+  font-size: 1.1rem !important;
+  color: #000000 !important;
+  background: var(--yellow) !important;
+  border: 2px solid #000 !important;
+  box-shadow: 2px 2px 0px #000;
+  padding: 0.4rem 1rem !important; 
+  margin-top: 0.8rem !important; 
+  letter-spacing: 0.05em;
   text-decoration: none !important;
-  transition: background 0.15s;
+  transition: all 0.1s ease;
 }
 
 .events-embed .events a.more:hover {
-  background: #ffc400 !important;
-  color: #333 !important;
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #000;
+  opacity: 70% !important;
 }
 
 .events-embed .events .feeds {

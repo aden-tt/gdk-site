@@ -20,6 +20,8 @@ function renderHeader() {
         <nav class="nav-links-desktop">
           <a href="index.html" class="nav-item">HOME</a>
           <a href="about.html" class="nav-item">ABOUT</a>
+          <a href="faq.html" class="nav-item">FAQ</a>
+          <a href="get-involved.html" class="nav-item">GET INVOLVED!</a>
           <div class="nav-dropdown-wrapper">
             <a href="programs.html" class="nav-item">PROGRAMS / EVENTS<span class="dropdown-arrow">▼</span></a>
             <div class="arcade-dropdown">
@@ -27,15 +29,6 @@ function renderHeader() {
               <a href="gdc-trip.html" class="dropdown-sub-item">GDC Trip</a>
               <a href="little-big-mentorship.html" class="dropdown-sub-item">Little Big Mentorship</a>
               <a href="downtown-career-fair.html" class="dropdown-sub-item">Downtown Career Fair</a>
-            </div>
-          </div>
-
-          <a href="resources.html" class="nav-item">RESOURCES</a>
-          <a href="faq.html" class="nav-item">FAQ</a>
-          <div class="nav-dropdown-wrapper">
-            <a href="get-involved.html" class="nav-item">GET INVOLVED!<span class="dropdown-arrow">▼</span></a>
-            <div class="arcade-dropdown">
-              <a href="alumni-network.html" class="dropdown-sub-item">Alumni Network</a>
             </div>
           </div>
           <a href="contact.html" class="nav-item">CONTACT</a>
