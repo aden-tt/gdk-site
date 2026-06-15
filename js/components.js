@@ -113,7 +113,9 @@ function initUniversalCarousels() {
       if (slide.type === 'video') {
         slidesHTML += `
           <div class="carousel-slide carousel-slide--video">
-            <iframe src="${slide.src}" title="${slide.alt || 'Video slide'}" frameborder="0" allowfullscreen></iframe>
+          <iframe width="560" height="315" src="${slide.src}" title="${slide.alt || 'Video slide'}" frameborder="0" allow="accelerometer; 
+            autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+          </iframe>
           </div>`;
       } else {
         slidesHTML += `
