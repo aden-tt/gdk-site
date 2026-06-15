@@ -10,7 +10,7 @@ async function initConfigEngine() {
 
 async function fetchConfig() {
   try {
-    const response = await fetch('js/config.json', { cache: 'no-store' });
+    const response = await fetch('src/config.json', { cache: 'no-store' });
     if (!response.ok) {
       throw new Error(`Failed to load config.json: ${response.status}`);
     }
