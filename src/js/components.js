@@ -12,7 +12,7 @@ function renderHeader() {
       <div class="navbar-main">
         <a href="./index.html" class="nav-branding">
           <div class="logo-box">
-            <img class="logo-pixel" src="src/images/logo.png" alt="GDK Logo">
+            <img class="logo-pixel" src="images/logo.png" alt="GDK Logo">
           </div>
           <span class="nav-title">GAMEDEV KNIGHTS</span>
         </a>
