@@ -1,4 +1,4 @@
-# GDK Site (WIP)
+# GDK Site
 The official website codebase for GameDev Knights (GDK) at the University of Central Florida (UCF). 
 
 This site is built with basic HTML/CSS/JS to avoid the overhead of a overly complex framework. 
