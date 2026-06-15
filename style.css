@@ -1396,7 +1396,7 @@ main img, .gallery-item img, .program-card img {
 
 .events-embed .events {
   font-family: 'Readex Pro', sans-serif !important;
-  font-size: 0.85rem !important; 
+  font-size: 1.3rem !important; 
   color: var(--gray) !important; /* Standardized text color */
 }
 
@@ -1411,10 +1411,23 @@ main img, .gallery-item img, .program-card img {
   background: transparent !important;
 }
 
+/* --- COLUMN SIZING --- */ 
+/* Set the Date Column (typically the 1st column) to be compact */
+.events-embed .events th:first-child, 
+.events-embed .events td:first-child {
+  width: 210px !important; /* Forces the date box wrapper to be narrow */
+}
+
+/* Ensure description/title (typically the 2nd column) takes up the remaining room */
+.events-embed .events th:nth-child(2),
+.events-embed .events td:nth-child(2) {
+  width: auto !important; 
+}
+
 /* Tighter, stylized header row */
 .events-embed .events th {
   font-family: 'Readex Pro', sans-serif !important; /* Switched to arcade heading font */
-  font-size: 1rem !important; 
+  font-size: 0.9rem !important; 
   text-transform: uppercase !important;
   letter-spacing: 0.05em !important;
   color: var(--yellow) !important; /* Header pops in club color */
@@ -1434,13 +1447,13 @@ main img, .gallery-item img, .program-card img {
 .events-embed .events abbr {
   font-family: 'Readex Pro', sans-serif !important;
   font-weight: 600 !important;
-  font-size: 0.75rem !important; 
+  font-size: 1.3rem !important; 
   color: #000 !important;
   background: var(--blue-light); /* Makes dates scan easily */
   padding: 2px 6px;
   border-radius: 2px;
   text-decoration: none !important;
-  white-space: nowrap;
+  white-space: nowrap; 
 }
 
 /* Event Titles */
@@ -1461,7 +1474,7 @@ main img, .gallery-item img, .program-card img {
 .events-embed .events .location a {
   font-family: 'Readex Pro', sans-serif !important;
   color: var(--gray) !important;
-  font-size: 0.7rem !important; 
+  font-size: 1.2rem !important; 
   margin-top: 1px;
   display: block;
 }
