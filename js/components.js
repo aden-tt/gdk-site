@@ -18,20 +18,20 @@ function renderHeader() {
         </a>
 
         <nav class="nav-links-desktop">
-          <a href="index.html" class="nav-item" data-config-link="home">HOME</a>
-          <a href="about.html" class="nav-item" data-config-link="about">ABOUT</a>
-          <a href="faq.html" class="nav-item" data-config-link="faq">FAQ</a>
-          <a href="get-involved.html" class="nav-item" data-config-link="get_involved">GET INVOLVED!</a>
+          <a href="index.html" class="nav-item">HOME</a>
+          <a href="about.html" class="nav-item">ABOUT</a>
+          <a href="faq.html" class="nav-item">FAQ</a>
+          <a href="get-involved.html" class="nav-item">GET INVOLVED!</a>
           <div class="nav-dropdown-wrapper">
-            <a href="programs.html" class="nav-item" data-config-link="programs">PROGRAMS / EVENTS<span class="dropdown-arrow">▼</span></a>
+            <a href="programs.html" class="nav-item">PROGRAMS / EVENTS<span class="dropdown-arrow">▼</span></a>
             <div class="arcade-dropdown">
-              <a href="project-program.html" class="dropdown-sub-item" data-config-link="project_program">Project Program</a>
-              <a href="gdc-trip.html" class="dropdown-sub-item" data-config-link="gdc_trip">GDC Trip</a>
-              <a href="little-big-mentorship.html" class="dropdown-sub-item" data-config-link="little_big_mentorship">Little Big Mentorship</a>
-              <a href="downtown-career-fair.html" class="dropdown-sub-item" data-config-link="career_fair">Downtown Career Fair</a>
+              <a href="project-program.html" class="dropdown-sub-item">Project Program</a>
+              <a href="gdc-trip.html" class="dropdown-sub-item">GDC Trip</a>
+              <a href="little-big-mentorship.html" class="dropdown-sub-item">Little Big Mentorship</a>
+              <a href="downtown-career-fair.html" class="dropdown-sub-item">Downtown Career Fair</a>
             </div>
           </div>
-          <a href="contact.html" class="nav-item" data-config-link="contact">CONTACT</a>
+          <a href="contact.html" class="nav-item">CONTACT</a>
         </nav>
 
         <button class="menu-toggle-btn" aria-label="Toggle Menu" onclick="document.querySelector('.navbar-container').classList.toggle('open')">
@@ -61,10 +61,10 @@ function renderFooter() {
       <div class="footer-right">
         <p><b>Socials</b></p>
         <ul>
-          <li><a href="https://discord.gg/WgPk4Tp8Cg" data-config-link="discord">Discord</a></li>
-          <li><a href="https://www.linkedin.com/company/game-development-knights/" data-config-link="linkedin">LinkedIn</a></li>
-          <li><a href="https://www.instagram.com/gamedevknights/" data-config-link="instagram">Instagram</a></li>
-          <li><a href="https://knightconnect.campuslabs.com/engage/organization/gamedevknights" data-config-link="knightconnect">KnightConnect</a></li>
+          <li><a href="https://discord.gg/WgPk4Tp8Cg">Discord</a></li>
+          <li><a href="https://www.linkedin.com/company/game-development-knights/">LinkedIn</a></li>
+          <li><a href="https://www.instagram.com/gamedevknights/">Instagram</a></li>
+          <li><a href="https://knightconnect.campuslabs.com/engage/organization/gamedevknights">KnightConnect</a></li>
         </ul>
       </div>
     </footer>

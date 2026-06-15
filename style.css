@@ -1,4 +1,6 @@
-@charset "UTF-8";
+/* ==========================================================================
+   1. DESIGN SYSTEM VARIABLES & GLOBAL RESETS
+   ========================================================================== */
 :root {
   --yellow: #FFCC00;
   --dark: #141414;
@@ -22,37 +24,40 @@ html {
 }
 
 body {
-  font-family: "Readex Pro", sans-serif;
+  font-family: 'Readex Pro', sans-serif;
   color: #222;
   line-height: 1.6;
 }
 
-h1,
-h2,
-h3,
-.nav-title {
-  font-family: "Jaro", sans-serif;
+/* Typography Hierarchy */
+h1, h2, h3, .nav-title {
+  font-family: 'Jaro', sans-serif;
   letter-spacing: 1px;
 }
 
 h5 {
-  font-family: "Readex Pro", sans-serif;
+  font-family: 'Readex Pro', sans-serif;
   letter-spacing: 1px;
   font-size: 1.2rem;
 }
 
-ul,
+ul {
+  padding-left: 1.5rem;
+  list-style-position: inside;
+}
 ol {
   padding-left: 1.5rem;
   list-style-position: inside;
 }
-
-main img,
-.gallery-item img,
-.program-card img {
+/* Universal Media Lightbox Pointer */
+main img, .gallery-item img, .program-card img {
   cursor: pointer;
 }
 
+
+/* ==========================================================================
+   2. SITE ARCHITECTURE: NAVIGATION (NAVBAR)
+   ========================================================================== */
 .navbar-container {
   position: sticky;
   top: 0;
@@ -71,6 +76,7 @@ main img,
   padding-right: 1.5rem;
 }
 
+/* Branding */
 .nav-branding {
   display: flex;
   align-items: center;
@@ -102,6 +108,7 @@ main img,
   line-height: 1;
 }
 
+/* Navigation Links & Dropdowns */
 .nav-links-desktop {
   display: flex;
   height: 100%;
@@ -114,7 +121,7 @@ main img,
 }
 
 .nav-item {
-  font-family: "Jaro", sans-serif;
+  font-family: 'Jaro', sans-serif;
   font-size: 1.2rem;
   color: #000000;
   text-decoration: none;
@@ -144,6 +151,7 @@ main img,
   vertical-align: middle;
 }
 
+/* Arcade Dropdown Module */
 .arcade-dropdown {
   display: none;
   position: absolute;
@@ -161,7 +169,7 @@ main img,
 
 .dropdown-sub-item {
   display: block;
-  font-family: "Readex Pro", sans-serif;
+  font-family: 'Readex Pro', sans-serif;
   font-weight: 500;
   font-size: 0.95rem;
   color: #ffffff;
@@ -174,8 +182,9 @@ main img,
 .dropdown-sub-item:hover {
   background: var(--yellow);
   color: #000000;
-}
+} 
 
+/* Mobile Navigation Trigger Button */
 .menu-toggle-btn {
   display: none;
   background: #000000;
@@ -188,7 +197,7 @@ main img,
 }
 
 .btn-label {
-  font-family: "Jaro", sans-serif;
+  font-family: 'Jaro', sans-serif;
   color: var(--yellow);
   font-size: 1.1rem;
 }
@@ -206,19 +215,27 @@ main img,
   display: block;
 }
 
+
+/* ==========================================================================
+   3. LANDING PAGE LAYOUT MODULES (HERO, ABOUT, COMMUNITY)
+   ========================================================================== */
+
+/* Hero Canvas */
+/* Hero Canvas with Video Background & CRT Stylization */
 .hero {
   position: relative;
   text-align: center;
-  padding: 6rem 1rem 5rem;
+  padding: 6rem 1rem 5rem; /* Slightly increased padding for breathing room */
   background-color: var(--darker);
   color: #fff;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 550px;
+  min-height: 550px; /* Ensures a consistent canvas height */
 }
 
+/* 1. The Video Container Canvas */
 .hero-video-bg {
   position: absolute;
   top: 50%;
@@ -230,34 +247,42 @@ main img,
   z-index: 1;
 }
 
+/* 2. Retro CRT Scanline & Color Vignette Overlay */
 .hero-video-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, rgba(13, 13, 13, 0.85), rgba(20, 20, 20, 0.6) 30%, rgba(20, 20, 20, 0.6) 70%, rgba(13, 13, 13, 0.85));
+  /* Dark color grading to ensure high typography contrast */
+  background: linear-gradient(
+    to bottom, 
+    rgba(13, 13, 13, 0.85), 
+    rgba(20, 20, 20, 0.6) 30%, 
+    rgba(20, 20, 20, 0.6) 70%, 
+    rgba(13, 13, 13, 0.85)
+  );
   z-index: 2;
 }
 
+/* Generating procedural scanlines using a linear-gradient background pattern */
 .hero-video-overlay::before {
   content: " ";
   display: block;
   position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.04));
-  background-size: 100% 4px, 6px 100%;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%), 
+              linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.04));
+  background-size: 100% 4px, 6px 100%; /* Simulated pixel grid mask */
   z-index: 3;
   opacity: 0.8;
   pointer-events: none;
 }
 
+/* 3. Hero Content Foreground Matrix */
 .hero-content {
   position: relative;
-  z-index: 4;
+  z-index: 4; /* Keeps branding safely above overlays */
 }
 
 .hero-logo {
@@ -282,7 +307,7 @@ main img,
 
 .hero-cta {
   margin-top: 2rem;
-  font-family: "Jaro", sans-serif;
+  font-family: 'Jaro', sans-serif;
   font-size: 1.5rem;
   padding: 0.75rem 2rem;
   background: var(--yellow);
@@ -302,7 +327,7 @@ main img,
   transform: translate(6px, 6px);
   box-shadow: 0px 0px 0px #000000;
 }
-
+/* About Grid */
 .about {
   display: flex;
   flex-wrap: wrap;
@@ -313,24 +338,23 @@ main img,
   align-items: stretch;
 }
 
-.about-image,
-.about-text {
-  border-radius: 4px;
-  border: 3px solid #000;
-  box-shadow: 6px 6px 0px #000;
-}
-
 .about-image {
   flex: 1 1 480px;
   min-height: 360px;
   position: relative;
   overflow: hidden;
   background: var(--dark);
+  border: 3px solid #000;
+  box-shadow: 6px 6px 0px #000;
+  border-radius: 4px;
 }
 
 .about-text {
   flex: 1 1 300px;
   background: var(--dark);
+  border: 3px solid #000;
+  box-shadow: 6px 6px 0px #000;
+  border-radius: 4px;
   padding: 2.2rem 2rem;
   display: flex;
   flex-direction: column;
@@ -343,7 +367,7 @@ main img,
 
 .about-text::before {
   content: "// ABOUT GDK";
-  font-family: "Jaro", sans-serif;
+  font-family: 'Jaro', sans-serif;
   font-size: 0.85rem;
   letter-spacing: 2px;
   color: var(--yellow);
@@ -354,6 +378,7 @@ main img,
   color: #fff;
 }
 
+/* Community & Events Matrix */
 .community-events {
   display: flex;
   flex-wrap: wrap;
@@ -361,11 +386,6 @@ main img,
   max-width: 1100px;
   margin: 0 auto 3rem;
   padding: 0 1rem;
-}
-
-.cta-col,
-.events-col {
-  min-width: 0;
 }
 
 .cta-col {
@@ -377,20 +397,17 @@ main img,
   text-align: left;
 }
 
-.cta-col h2,
-.events-col h2 {
+.cta-col h2, .events-col h2 {
   font-size: 1.9rem;
   margin-bottom: 0.75rem;
 }
 
-.discord-embed,
-.events-embed {
+.discord-embed, .events-embed {
   margin-top: 1rem;
   overflow: hidden;
 }
 
-.discord-embed iframe,
-.events-embed iframe {
+.discord-embed iframe, .events-embed iframe {
   display: block;
 }
 
@@ -416,15 +433,14 @@ main img,
 .get-involved-cta::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 5px;
   height: 100%;
   background: var(--yellow);
 }
 
 .get-involved-tagline {
-  font-family: "Jaro", sans-serif;
+  font-family: 'Jaro', sans-serif;
   font-size: 2rem;
   color: var(--yellow);
   margin: 0;
@@ -432,17 +448,10 @@ main img,
   text-shadow: 3px 3px 0px #000;
 }
 
-.get-involved-btn,
-.learn-more,
-.node-cta,
-.hub-btn {
-  font-family: "Jaro", sans-serif;
-  transition: all 0.1s ease;
-}
-
 .get-involved-btn {
   display: inline-block;
   margin-top: 0.75rem;
+  font-family: 'Jaro', sans-serif;
   font-size: 1.2rem;
   padding: 0.7rem 1.75rem;
   background: var(--yellow);
@@ -450,6 +459,7 @@ main img,
   text-decoration: none;
   border: 3px solid #000;
   box-shadow: 4px 4px 0px #000;
+  transition: all 0.1s ease;
   align-self: flex-start;
 }
 
@@ -463,45 +473,40 @@ main img,
   box-shadow: 0px 0px 0px #000;
 }
 
+
+/* ==========================================================================
+   4. PROGRAMS & SPONSORS MODULES
+   ========================================================================== */
+
+/* Programs Section Grid Architecture */
 .programs {
-  background-color: var(--dark-gray);
+  background-color: var(--dark-gray); 
   background-image: radial-gradient(#141414 20%, transparent 20%);
   background-size: 12px 12px;
   padding: 0 0 2.5rem 0;
 }
 
-.programs h2,
-.what-we-do-grid h2 {
+.programs h2 {
   text-align: center;
   background: #000000;
   color: var(--yellow);
   font-size: 2.6rem;
-  padding: 0.5rem 1rem;
+  padding: .5rem 1rem;
   margin-bottom: 2.5rem;
   width: 100%;
 }
 
-.program-card,
-.grid-card {
-  background: var(--dark);
-  border: 3px solid #000000;
-  box-shadow: 6px 6px 0px #000000;
-  border-radius: 4px;
-  padding: 2rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  transition: transform 0.1s ease;
-}
-
 .program-card {
+  background: var(--dark);
   max-width: 1000px;
   margin: 0 auto 1.5rem;
+  border-radius: 4px;
   padding: 1.8rem;
   display: flex;
   flex-wrap: wrap;
   gap: 1.8rem;
+  border: 3px solid #000000;
+  box-shadow: 10px 10px 0px #000000;
 }
 
 .program-image {
@@ -523,12 +528,8 @@ main img,
   font-size: 0.95rem;
 }
 
-.program-text h3,
-.grid-card h3 {
-  color: var(--yellow);
-}
-
 .program-text h3 {
+  color: var(--yellow);
   font-size: 1.4rem;
 }
 
@@ -538,6 +539,7 @@ main img,
   background: var(--yellow);
   color: #1a1a1a;
   border: none;
+  font-family: 'Jaro', sans-serif;
   padding: 0.6rem 1.2rem;
   border-radius: 4px;
   cursor: pointer;
@@ -548,6 +550,7 @@ main img,
   opacity: 0.75;
 }
 
+/* Sponsors Strip */
 .sponsors {
   background: #f5f4f0;
   border-top: 3px solid #000;
@@ -604,42 +607,10 @@ main img,
   color: #7a6a00;
 }
 
-.what-we-do-grid {
-  background-color: var(--dark-gray);
-  background-image: radial-gradient(#141414 20%, transparent 20%);
-  background-size: 12px 12px;
-  padding: 0 0 3.5rem 0;
-}
 
-.what-we-do-grid .grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-.grid-card:hover {
-  transform: translateY(-4px);
-}
-
-.card-icon {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.grid-card p {
-  color: var(--gray);
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-.grid-cta-wrapper {
-  text-align: center;
-  margin-top: 3rem;
-}
-
+/* ==========================================================================
+   5. INNER PAGES & SIDEBAR LAYOUT ARCHITECTURE
+   ========================================================================== */
 .page-banner {
   text-align: center;
   padding: 3.5rem 1rem 3rem;
@@ -647,7 +618,9 @@ main img,
   color: #fff;
   border-bottom: 4px solid #000000;
   position: relative;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
@@ -709,6 +682,7 @@ main img,
   color: #000;
 }
 
+/* Sidebar Layout Engine */
 .sidebar-content {
   flex: 1 1 280px;
 }
@@ -726,7 +700,7 @@ main img,
   color: var(--yellow);
   font-size: 1.4rem;
   margin-bottom: 1rem;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+  border-bottom: 1px dashed rgba(255,255,255,0.2);
   padding-bottom: 0.4rem;
 }
 
@@ -750,6 +724,10 @@ main img,
   text-decoration: underline;
 }
 
+
+/* ==========================================================================
+   6. INVOLVEMENT HUB & PAYMENT NODES
+   ========================================================================== */
 .involvement-hub {
   background-color: #fdfdfb;
   padding: 4rem 1rem;
@@ -779,7 +757,7 @@ main img,
 }
 
 .step-number {
-  font-family: "Jaro", sans-serif;
+  font-family: 'Jaro', sans-serif;
   font-size: 3rem;
   color: var(--dark-gray);
   line-height: 1;
@@ -789,14 +767,17 @@ main img,
   color: var(--yellow) !important;
 }
 
+.hub-content {
+  flex: 1;
+}
+
 .hub-content h2 {
   font-size: 1.8rem;
   margin-bottom: 0.5rem;
   color: #000000;
 }
 
-.hub-content p,
-.premium-card p {
+.hub-content p {
   margin-bottom: 1.5rem;
   font-size: 1rem;
   line-height: 1.6;
@@ -808,12 +789,17 @@ main img,
 
 .hub-btn {
   display: inline-block;
+  font-family: 'Jaro', sans-serif;
   font-size: 1.1rem;
   padding: 0.6rem 1.5rem;
   text-decoration: none;
   border: 2px solid #000000;
   box-shadow: 3px 3px 0px #000000;
+  transition: all 0.1s ease;
 }
+
+.discord-color { background: #5865F2; color: #ffffff; }
+.default-color { background: var(--yellow); color: #000000; }
 
 .hub-btn:hover {
   transform: translate(1px, 1px);
@@ -826,6 +812,7 @@ main img,
   margin: 1rem 0;
 }
 
+/* Tier Processing Grid Matrix */
 .payment-action-row {
   display: flex;
   flex-wrap: wrap;
@@ -848,7 +835,7 @@ main img,
 }
 
 .node-label {
-  font-family: "Readex Pro", sans-serif;
+  font-family: 'Readex Pro', sans-serif;
   font-weight: 700;
   font-size: 0.8rem;
   letter-spacing: 0.05em;
@@ -857,7 +844,7 @@ main img,
 }
 
 .node-cost {
-  font-family: "Jaro", sans-serif;
+  font-family: 'Jaro', sans-serif;
   font-size: 2.2rem;
   color: #ffffff;
   line-height: 1;
@@ -867,6 +854,7 @@ main img,
 .node-cta {
   width: 100%;
   text-align: center;
+  font-family: 'Jaro', sans-serif;
   font-size: 1.1rem;
   padding: 0.5rem;
   background: var(--yellow);
@@ -874,6 +862,7 @@ main img,
   border: 2px solid #000000;
   box-shadow: 2px 2px 0px #000000;
   border-radius: 2px;
+  transition: all 0.1s ease;
 }
 
 .popular-node {
@@ -890,15 +879,11 @@ main img,
 }
 
 @keyframes retro-pulse {
-  0% {
-    transform: translate(2px, 2px);
-    box-shadow: 2px 2px 0px #000;
-  }
-  100% {
-    transform: translate(0px, 0px);
-    box-shadow: 5px 5px 0px var(--yellow);
-  }
+  0% { transform: translate(2px, 2px); box-shadow: 2px 2px 0px #000; }
+  100% { transform: translate(0px, 0px); box-shadow: 5px 5px 0px var(--yellow); }
 }
+
+/* Tier Feature Matrix Component */
 .tier-comparison-box {
   display: flex;
   gap: 1.5rem;
@@ -920,19 +905,14 @@ main img,
 }
 
 .tier-title {
-  font-family: "Jaro", sans-serif;
+  font-family: 'Jaro', sans-serif;
   font-size: 1.2rem;
   margin-bottom: 0.75rem;
   letter-spacing: 0.05em;
 }
 
-.free-title {
-  color: var(--gray);
-}
-
-.paid-title {
-  color: var(--yellow);
-}
+.free-title { color: var(--gray); }
+.paid-title { color: var(--yellow); }
 
 .tier-features {
   list-style: none;
@@ -958,6 +938,12 @@ main img,
   color: var(--yellow);
 }
 
+
+/* ==========================================================================
+   7. REUSABLE UI COMPONENTS (ACCORDIONS, CAROUSELS, TOASTS, MODALS)
+   ========================================================================== */
+
+/* Universal Accordions */
 .universal-accordion-group {
   margin-bottom: 1.5rem;
 }
@@ -1004,6 +990,7 @@ main img,
   padding-bottom: 1.2rem;
 }
 
+/* Base Layout Carousels */
 .universal-carousel {
   position: relative;
 }
@@ -1014,24 +1001,23 @@ main img,
   height: 100%;
 }
 
-.carousel-track,
-.fair-carousel-track {
+.carousel-track {
   display: flex;
   height: 100%;
   width: 100%;
   transition: transform 0.4s ease;
 }
 
-.carousel-slide,
-.fair-carousel-slide {
+.carousel-slide {
   flex: 0 0 100%;
   height: 100%;
+  min-height: 340px;
 }
 
-.carousel-slide img,
-.fair-carousel-slide img {
+.carousel-slide img {
   width: 100%;
   height: 100%;
+  min-height: 340px;
   object-fit: cover;
   display: block;
 }
@@ -1043,8 +1029,7 @@ main img,
   background: #000;
 }
 
-.carousel-slide--video iframe,
-.fair-carousel-slide iframe {
+.carousel-slide--video iframe {
   width: 100%;
   height: 100%;
   min-height: 340px;
@@ -1052,12 +1037,11 @@ main img,
   border: none;
 }
 
-.carousel-btn,
-.fair-carousel-btn {
+.carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(0,0,0,0.35);
   color: #fff;
   border: none;
   width: 36px;
@@ -1068,27 +1052,16 @@ main img,
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10;
-  transition: background 0.2s;
 }
 
-.carousel-btn:hover,
-.fair-carousel-btn:hover {
-  background: rgba(0, 0, 0, 0.55);
+.carousel-btn:hover {
+  background: rgba(0,0,0,0.55);
 }
 
-.carousel-btn.prev,
-.fair-carousel-btn.prev {
-  left: 12px;
-}
+.carousel-btn.prev { left: 12px; }
+.carousel-btn.next { right: 12px; }
 
-.carousel-btn.next,
-.fair-carousel-btn.next {
-  right: 12px;
-}
-
-.carousel-dots,
-.fair-carousel-dots {
+.carousel-dots {
   position: absolute;
   bottom: 14px;
   left: 50%;
@@ -1097,21 +1070,19 @@ main img,
   gap: 8px;
 }
 
-.carousel-dots .dot,
-.fair-carousel-dots .fair-dot {
+.carousel-dots .dot {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255,255,255,0.6);
   cursor: pointer;
-  transition: background 0.2s;
 }
 
-.carousel-dots .dot.active,
-.fair-carousel-dots .fair-dot.active {
+.carousel-dots .dot.active {
   background: #fff;
 }
 
+/* Page Showcase Fair Carousels */
 .top-showcase-carousel {
   max-width: 1000px;
   margin: 2rem auto 0;
@@ -1128,6 +1099,76 @@ main img,
   box-shadow: 6px 6px 0px #000000;
 }
 
+.fair-carousel-track {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  transition: transform 0.4s ease;
+}
+
+.fair-carousel-slide {
+  flex: 0 0 100%;
+  height: 100%;
+}
+
+.fair-carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+}
+
+.fair-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background 0.2s;
+}
+
+.fair-carousel-btn:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+.fair-carousel-btn.prev { left: 16px; }
+.fair-carousel-btn.next { right: 16px; }
+
+.fair-carousel-dots {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.fair-carousel-dots .fair-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.fair-carousel-dots .fair-dot.active {
+  background: #fff;
+}
+
+/* Media Gallery & Clean Image Lightbox Modals */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -1140,6 +1181,13 @@ main img,
   height: 180px;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .global-modal-overlay {
@@ -1178,6 +1226,7 @@ main img,
   user-select: none;
 }
 
+/* Achievement Notification Center toasts */
 #achievement-toast-container {
   position: fixed;
   bottom: 20px;
@@ -1207,7 +1256,7 @@ main img,
 .achievement-icon {
   background: var(--yellow);
   color: var(--darker);
-  font-family: "Jaro", sans-serif;
+  font-family: 'Jaro', sans-serif;
   font-size: 1.2rem;
   padding: 4px 8px;
   border-radius: 4px;
@@ -1215,7 +1264,7 @@ main img,
 }
 
 .achievement-details h4 {
-  font-family: "Jaro", sans-serif;
+  font-family: 'Jaro', sans-serif;
   color: var(--yellow);
   margin: 0;
   font-size: 1.1rem;
@@ -1223,12 +1272,15 @@ main img,
 }
 
 .achievement-details p {
-  font-family: "Readex Pro", sans-serif;
+  font-family: 'Readex Pro', sans-serif;
   color: #fff;
   margin: 0;
   font-size: 0.85rem;
 }
 
+/* ==========================================================================
+   10b. VOLUNTEER STAFFING PROGRAM STYLIZATION MODULES
+   ========================================================================== */
 .volunteer-staff-section {
   margin-top: 3.5rem;
   border-top: 4px dashed var(--dark);
@@ -1251,7 +1303,7 @@ main img,
 }
 
 .v-callout-card h4 {
-  font-family: "Jaro", sans-serif;
+  font-family: 'Jaro', sans-serif;
   color: var(--dark);
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
@@ -1270,6 +1322,7 @@ main img,
   box-shadow: 6px 6px 0px var(--dark) !important;
 }
 
+/* Get Involved Page Variations */
 .volunteer-staff-card {
   background: #141414 !important;
   color: var(--gray);
@@ -1279,62 +1332,72 @@ main img,
   color: var(--blue-light) !important;
 }
 
+
 .staff-btn-color {
   background: var(--blue-light);
   color: var(--darker);
 }
-
 .staff-btn-color:hover {
   background: #ffffff;
 }
 
-.shiny-btn {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-}
+/* SHINY BUTTONS */
 
-.shiny-btn::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -150%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0) 100%);
-  transform: skewX(-25deg);
-  z-index: 1;
-  animation: button-shine 4s infinite ease-in-out;
-}
 
-@keyframes button-shine {
-  0% {
-    left: -150%;
-  }
-  15% {
-    left: 150%;
-  }
-  100% {
-    left: 150%;
-  }
-}
+    .shiny-btn {
+      position: relative;
+      overflow: hidden; /* Restricts the shine effect inside the button boundaries */
+      isolation: isolate; /* Ensures pseudo-elements stay layered properly */
+    }
+
+    /* 1. Periodic Shine Effect (Every 4 seconds) */
+    .shiny-btn::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.7) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: skewX(-25deg);
+      z-index: 1;
+      animation: button-shine 4s infinite ease-in-out;
+    }
+
+    @keyframes button-shine {
+      0% { left: -150%; }
+      15% { left: 150%; } /* Fast sweep across the button */
+      100% { left: 150%; } /* Long pause before repeating */
+    }
+
+
+
+/* ==========================================================================
+   8. SPECIALIZED THIRD-PARTY OVERRIDES (UCF WIDGET WARM-THEME RESTYLE)
+   ========================================================================== */
 .events-embed {
-  background: var(--dark);
+  background: var(--dark); /* Switched to matching club dark theme */
   text-align: left;
-  padding: 1rem;
+  padding: 1rem; 
   border: 3px solid #000;
   box-shadow: 4px 4px 0px #000;
   border-radius: 4px;
 }
 
+/* Hide native widget header */
 .events-embed .events h4 {
   display: none !important;
 }
 
 .events-embed .events {
-  font-family: "Readex Pro", sans-serif !important;
-  font-size: 0.85rem !important;
-  color: var(--gray) !important;
+  font-family: 'Readex Pro', sans-serif !important;
+  font-size: 0.85rem !important; 
+  color: var(--gray) !important; /* Standardized text color */
 }
 
 .events-embed .events table {
@@ -1342,46 +1405,51 @@ main img,
   border-collapse: collapse;
 }
 
+/* Force all table rows to be transparent and remove alternating row blocks */
 .events-embed .events tr,
 .events-embed .events tr.alt {
   background: transparent !important;
 }
 
+/* Tighter, stylized header row */
 .events-embed .events th {
-  font-family: "Readex Pro", sans-serif !important;
-  font-size: 1rem !important;
+  font-family: 'Readex Pro', sans-serif !important; /* Switched to arcade heading font */
+  font-size: 1rem !important; 
   text-transform: uppercase !important;
   letter-spacing: 0.05em !important;
-  color: var(--yellow) !important;
+  color: var(--yellow) !important; /* Header pops in club color */
   background: transparent !important;
   border-bottom: 2px dashed rgba(255, 255, 255, 0.2) !important;
-  padding: 0 0 0.4rem 0 !important;
+  padding: 0 0 0.4rem 0 !important; 
 }
 
+/* Super tight layout structure */
 .events-embed .events td {
   border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-  padding: 0.35rem 0.25rem !important;
-  vertical-align: middle !important;
+  padding: 0.35rem 0.25rem !important; /* Extremely compressed spacing */
+  vertical-align: middle !important; 
 }
 
+/* Dynamic Date Box Badge */
 .events-embed .events abbr {
-  font-family: "Readex Pro", sans-serif !important;
+  font-family: 'Readex Pro', sans-serif !important;
   font-weight: 600 !important;
-  font-size: 0.75rem !important;
+  font-size: 0.75rem !important; 
   color: #000 !important;
-  background: var(--blue-light);
+  background: var(--blue-light); /* Makes dates scan easily */
   padding: 2px 6px;
   border-radius: 2px;
   text-decoration: none !important;
   white-space: nowrap;
 }
 
+/* Event Titles */
 .events-embed .events a.url {
-  font-family: "Readex Pro", sans-serif !important;
+  font-family: 'Readex Pro', sans-serif !important;
   font-weight: 500 !important;
   color: #ffffff !important;
   text-decoration: none !important;
-  line-height: 1.2 !important;
+  line-height: 1.2 !important; 
 }
 
 .events-embed .events a.url:hover {
@@ -1389,25 +1457,27 @@ main img,
   text-decoration: underline !important;
 }
 
+/* Sub-locations text placement */
 .events-embed .events .location a {
-  font-family: "Readex Pro", sans-serif !important;
+  font-family: 'Readex Pro', sans-serif !important;
   color: var(--gray) !important;
-  font-size: 0.7rem !important;
+  font-size: 0.7rem !important; 
   margin-top: 1px;
   display: block;
 }
 
+/* Tightened Footer Button */
 .events-embed .events a.more {
   display: block !important;
   text-align: center;
-  font-family: "Jaro", sans-serif !important;
+  font-family: 'Jaro', sans-serif !important;
   font-size: 1.1rem !important;
   color: #000000 !important;
   background: var(--yellow) !important;
   border: 2px solid #000 !important;
   box-shadow: 2px 2px 0px #000;
-  padding: 0.4rem 1rem !important;
-  margin-top: 0.8rem !important;
+  padding: 0.4rem 1rem !important; 
+  margin-top: 0.8rem !important; 
   letter-spacing: 0.05em;
   text-decoration: none !important;
   transition: all 0.1s ease;
@@ -1423,27 +1493,24 @@ main img,
   display: none !important;
 }
 
+
+/* ==========================================================================
+   9. INTERACTIVE JAVASCRIPT ANIMATION HOOKS
+   ========================================================================== */
 .screen-shake-active {
-  animation: shake-screen 0.3s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  animation: shake-screen 0.3s cubic-bezier(.36,.07,.19,.97) both;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   perspective: 1000px;
 }
 
 @keyframes shake-screen {
-  10%, 90% {
-    transform: translate3d(-2px, 0, 0);
-  }
-  20%, 80% {
-    transform: translate3d(4px, 0, 0);
-  }
-  30%, 50%, 70% {
-    transform: translate3d(-6px, 0, 0);
-  }
-  40%, 60% {
-    transform: translate3d(6px, 0, 0);
-  }
+  10%, 90% { transform: translate3d(-2px, 0, 0); }
+  20%, 80% { transform: translate3d(4px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+  40%, 60% { transform: translate3d(6px, 0, 0); }
 }
+
 #fx-canvas-overlay {
   position: fixed;
   top: 0;
@@ -1455,6 +1522,10 @@ main img,
   image-rendering: pixelated;
 }
 
+
+/* ==========================================================================
+   10. SITE ARCHITECTURE: FOOTER CONTAINER
+   ========================================================================== */
 .footer {
   background: var(--darker);
   color: #ccc;
@@ -1494,14 +1565,87 @@ main img,
 .footer-right a:hover {
   text-decoration: underline;
 }
+/* ==========================================================================
+   WHAT WE DO PREVIEW GRID (INDEX.HTML)
+   ========================================================================== */
+.what-we-do-grid {
+  background-color: var(--dark-gray); 
+  background-image: radial-gradient(#141414 20%, transparent 20%);
+  background-size: 12px 12px;
+  padding: 0 0 3.5rem 0;
+}
 
+.what-we-do-grid h2 {
+  text-align: center;
+  background: #000000;
+  color: var(--yellow);
+  font-size: 2.6rem;
+  padding: .5rem 1rem;
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+.what-we-do-grid .grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.grid-card {
+  background: var(--dark);
+  border: 3px solid #000000;
+  box-shadow: 6px 6px 0px #000000;
+  border-radius: 4px;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: transform 0.1s ease;
+}
+
+.grid-card:hover {
+  transform: translateY(-4px);
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.grid-card h3 {
+  color: var(--yellow);
+  font-size: 1.5rem;
+}
+
+.grid-card p {
+  color: var(--gray);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.grid-cta-wrapper {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+/* ==========================================================================
+   11. GLOBAL RESPONSIVE MEDIA QUERIES (BREAKDOWN ORDER)
+   ========================================================================== */
+
+/* Tablet Responsive Framework (Max-Width: 960px) */
 @media (max-width: 960px) {
   .menu-toggle-btn {
     display: flex;
   }
+
   .navbar-container.open .nav-links-desktop {
     display: flex;
   }
+
   .nav-links-desktop {
     display: none;
     position: absolute;
@@ -1514,6 +1658,7 @@ main img,
     height: auto;
     align-items: stretch;
   }
+
   .nav-item {
     color: #ffffff;
     padding: 1rem 1.5rem;
@@ -1521,6 +1666,7 @@ main img,
     border-right: none;
     border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
   }
+
   .nav-item.active {
     background: var(--dark-gray);
     color: var(--yellow);
@@ -1528,12 +1674,15 @@ main img,
     border-right: none;
     margin-left: 0;
   }
+
   .nav-dropdown-wrapper {
     height: auto;
   }
+
   .nav-dropdown-wrapper:hover .arcade-dropdown {
     display: none;
   }
+
   .nav-dropdown-wrapper .arcade-dropdown {
     display: block;
     position: static;
@@ -1542,11 +1691,14 @@ main img,
     box-shadow: none;
     padding: 0 0 0 1rem;
   }
+
   .dropdown-sub-item {
     padding: 0.75rem 1.5rem;
     border-bottom: 1px solid #252422;
   }
 }
+
+/* Medium Mobile Viewports (Max-Width: 768px) */
 @media (max-width: 768px) {
   .page-banner h1 {
     font-size: 2.2rem;
@@ -1558,6 +1710,8 @@ main img,
     height: 260px;
   }
 }
+
+/* Slim Mobile Viewports (Max-Width: 700px) */
 @media (max-width: 700px) {
   .hero h1 {
     font-size: 2rem;
@@ -1569,8 +1723,10 @@ main img,
     align-self: flex-start;
   }
 }
+
+/* Dynamic Complex Card Components Overrides (Max-Width: 600px) */
 @media (max-width: 600px) {
-  .tier-comparison-box {
-    flex-direction: column;
+  .tier-comparison-box { 
+    flex-direction: column; 
   }
 }
