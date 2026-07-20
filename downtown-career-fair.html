@@ -12,6 +12,8 @@
 <script src="js/components.js" defer></script>
 <script src="js/config-engine.js" defer></script>
 <style>
+
+  
   /* Page Specific Interactive Styles */
   .countdown-container {
     display: flex;
@@ -116,27 +118,14 @@
   <p class="subtitle">Connect with industry leaders at UCF Downtown</p>
 </section>
 
-<div class="top-showcase-carousel">
-  <div class="fair-carousel">
-    <div class="fair-carousel-track">
-      <div class="fair-carousel-slide"><img src="images/career-fair-1.png" alt="Recruiter reviewing student projects"></div>
-      <div class="fair-carousel-slide"><img src="images/career-fair-1.png" alt="Main networking venue hall"></div>
-      <div class="fair-carousel-slide"><img src="images/career-fair-1.png" alt="Onsite portfolio evaluations"></div>
-    </div>
-    <button class="fair-carousel-btn prev" aria-label="Previous slide">&#10094;</button>
-    <button class="fair-carousel-btn next" aria-label="Next slide">&#10095;</button>
-    <div class="fair-carousel-dots">
-      <span class="fair-dot active"></span>
-      <span class="fair-dot"></span>
-      <span class="fair-dot"></span>
-    </div>
-  </div>
-</div>
+
 
 <div class="inner-page-container">
   <div class="content-wrapper">
     
     <main class="primary-content">
+      
+      
       <h2>ABOUT THE EVENT</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -179,7 +168,7 @@
           }
         ]'>
       </div>
-
+<!--
       <h2>EVENT GALLERY</h2>
       <div class="gallery-grid">
         <div class="gallery-item"><img src="images/career-fair-1.png" alt="Recruiter reviewing work"></div>
@@ -190,6 +179,7 @@
         <div class="gallery-item"><img src="images/career-fair-1.png" alt="Recruiter reviewing work"></div>
         <div class="gallery-item"><img src="images/career-fair-1.png" alt="Recruiter reviewing work"></div>
       </div>
+    -->
     </main>
 
     <aside class="sidebar-content">
@@ -288,50 +278,6 @@
   setInterval(updateCountdown, 1000);
   updateCountdown();
 
-  // --- Career Fair Showcase Carousel Logic ---
-  const fairTrack = document.querySelector('.fair-carousel-track');
-  const fairSlides = document.querySelectorAll('.fair-carousel-slide');
-  const fairDots = document.querySelectorAll('.fair-carousel-dots .fair-dot');
-  let fairIndex = 0;
-
-  function goToFairSlide(i) {
-    fairIndex = (i + fairSlides.length) % fairSlides.length;
-    fairTrack.style.transform = `translateX(-${fairIndex * 100}%)`;
-    fairDots.forEach(d => d.classList.remove('active'));
-    fairDots[fairIndex].classList.add('active');
-  }
-
-  document.querySelector('.fair-carousel-btn.prev').addEventListener('click', () => goToFairSlide(fairIndex - 1));
-  document.querySelector('.fair-carousel-btn.next').addEventListener('click', () => goToFairSlide(fairIndex + 1));
-  fairDots.forEach((dot, i) => dot.addEventListener('click', () => goToFairSlide(i)));
-
-  // Automatic transition cycle
-  setInterval(() => goToFairSlide(fairIndex + 1), 5000);
-
-  // --- Universal Image Modal System ---
-  const modal = document.getElementById('global-image-modal');
-  const modalImg = document.getElementById('modal-target-image');
-  const closeBtn = document.querySelector('.global-modal-close');
-
-  document.body.addEventListener('click', function(e) {
-    if (e.target.tagName === 'IMG' && !e.target.closest('.logo-box') && !e.target.closest('.navbar-container')) {
-      modal.style.display = 'flex';
-      modalImg.src = e.target.src;
-      modalImg.alt = e.target.alt || "Expanded view";
-    }
-  });
-
-  modal.addEventListener('click', function(e) {
-    if (e.target === modal || e.target === closeBtn) {
-      modal.style.display = 'none';
-    }
-  });
-
-  document.addEventListener('keydown', function(e) {
-    if (e.key === "Escape" && modal.style.display === 'flex') {
-      modal.style.display = 'none';
-    }
-  });
 </script>
 
 </body>

@@ -12,91 +12,42 @@
 <script src="js/components.js" defer></script>
 <script src="js/config-engine.js" defer></script>
 <style>
-      /* Team Directory Module */
-    .team-section {
-      margin-top: 3rem;
-    }
+     /* Team Directory Module - Simplified */
+.team-section {
+  margin-top: 3rem;
+}
 
-    .team-intro {
-      margin-bottom: 2rem;
-      font-size: 1.1rem;
-    }
+.team-intro {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
 
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 1.5rem;
-    }
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  margin: 2rem 0;
+}
 
-    .team-card-col {
-      background: var(--card-bg);
-      border: 3px solid var(--dark);
-      box-shadow: 6px 6px 0px var(--dark);
-      padding: 1.5rem;
-    }
+.team-card-col h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--dark);
+  border-bottom: 2px solid var(--dark);
+  padding-bottom: 0.25rem;
+}
 
-    .team-card-header {
-      border-bottom: 2px dashed rgba(255, 255, 255, 0.1);
-      padding-bottom: 0.75rem;
-      margin-bottom: 1.5rem;
-    }
+.team-list {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+}
 
-    .team-card-header h3 {
-      color: var(--yellow);
-      font-size: 1.6rem;
-      margin: 0;
-    }
-
-    .team-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .team-list li {
-      font-family: 'Readex Pro', sans-serif;
-      color: #fff;
-      padding: 0.6rem 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .team-list li:last-child {
-      border-bottom: none;
-    }
-
-    /* UI Accents */
-    .role-badge {
-      background: var(--yellow);
-      color: var(--darker);
-      font-family: 'Jaro', sans-serif;
-      font-size: 0.8rem;
-      padding: 2px 6px;
-      letter-spacing: 0.5px;
-      border-radius: 2px;
-      min-width: 110px;
-      text-align: center;
-    }
-
-    .pronouns {
-      color: var(--blue-dark);
-      font-size: 0.85rem;
-      font-weight: normal;
-    }
-
-    /* Custom alignment rule for the staff column lacking position badges */
-    .staff-list li {
-      padding-left: 0.5rem;
-    }
-    .staff-list li::before {
-      content: "⬡";
-      color: var(--yellow);
-      margin-right: 0.25rem;
-    }
+.team-list li {
+  font-family: 'Readex Pro', sans-serif;
+  color: #222;
+  padding: 0.4rem 0;
+  font-size: 1rem;
+}
 </style>
 </head>
 
@@ -135,36 +86,31 @@
   
   <div class="team-grid">
     <div class="team-card-col">
-      <div class="team-card-header">
-        <h3>Officers</h3>
-      </div>
+      <h3>Officers</h3>
       <ul class="team-list">
-        <li><span class="role-badge">PRESIDENT</span> <strong>Aden Thompson</strong> <span class="pronouns">(he/him)</span></li>
-        <li><span class="role-badge">VICE PRESIDENT</span> <strong>Lauren Holloway</strong> <span class="pronouns">(she/her)</span></li>
-        <li><span class="role-badge">TREASURER</span> <strong>August Speisman</strong> <span class="pronouns">(any/all)</span></li>
-        <li><span class="role-badge">SECRETARY</span> <strong>Summer Smith</strong> <span class="pronouns">(they/them)</span></li>
-        <li><span class="role-badge">EVENTS COORD.</span> <strong>Rachel Kauffman</strong> <span class="pronouns">(she/her)</span></li>
-        <li><span class="role-badge">PUBLIC RELATIONS</span> <strong>Gabriella Serna</strong> <span class="pronouns">(she/her)</span></li>
+        <li>Aden Thompson (he/him) - President</li>
+        <li>Lauren Holloway (she/her) - Vice President</li>
+        <li>August Speisman (any/all) - Treasurer</li>
+        <li>Summer Smith (they/them) - Secretary</li>
+        <li>Rachel Kauffman (she/her) - Events Coord.</li>
+        <li>Gabriella Serna (she/her) - Public Relations</li>
       </ul>
     </div>
 
     <div class="team-card-col">
-      <div class="team-card-header">
-        <h3>Staff Members</h3>
-      </div>
-      <ul class="team-list staff-list">
-        <li><strong>[Insert Staff Name]</strong> <span class="pronouns">(pronouns)</span></li>
-        <li><strong>[Insert Staff Name]</strong> <span class="pronouns">(pronouns)</span></li>
+      <h3>Staff Members</h3>
+      <ul class="team-list">
+        <li>[Insert Staff Name]</li>
+        <li>[Insert Staff Name]</li>
       </ul>
     </div>
   </div>
 
-  
-    <h2>Join the Staff Crew!</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    <p><a href="get-involved.html#volunteer-staff" style="color: var(--dark); font-weight: 700; text-decoration: underline;">Learn how to apply on our Get Involved page →</a></p>
-  
+  <h2>Join the Staff Crew!</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <p><a href="get-involved.html#volunteer-staff" style="color: var(--dark); font-weight: 700; text-decoration: underline;">Learn how to apply on our Get Involved page →</a></p>
 </section>
+
 
 
     </article>

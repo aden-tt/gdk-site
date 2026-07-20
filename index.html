@@ -25,16 +25,14 @@
 <section class="hero">
   <div class="hero-video-overlay"></div>
 
-  <video class="hero-video-bg" autoplay loop muted playsinline>
-    <source src="https://fiea.ucf.edu/wp-content/uploads/sites/53/2025/03/hero_frontpage-1.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  
 
   <div class="hero-content">
     <img class="hero-logo" src="images/hero-logo.png" alt="GDK Logo">
     <h1>WELCOME TO GDK!</h1>
     <p class="subtitle">University of Central Florida's official game development club</p>
     <button class="hero-cta" onclick="location.href='about.html'" type="button">ABOUT US</button>
+    <button class="hero-cta" onclick="location.href='get-involved.html'" style="margin: 20PX;" type="button">JOIN ???</button>
   </div>
 </section>
 
@@ -57,18 +55,15 @@
 </section>
 
 <section class="community-events">
-  <div class="cta-col">
-    <div class="get-involved-cta">
-      <p class="get-involved-tagline">JOIN THE COMMUNITY! ⚔️ </p>
-      <p>GDK is open to creators of all skill levels, backgrounds, and majors. If you love games and want to meet people who make them, you're in the right place. Check out our Get Involved page to learn how to become a member, or just join our Discord community and say hi!</p>
-      <a href="get-involved.html" class="get-involved-btn shiny-btn">ACCEPT INVITE</a>
-    </div>
-  </div>
   <div class="events-col">
     <h2 style="text-align: center;"><i class="fa-solid fa-arrow-down"></i> <span style="margin: 0 40px;">UPCOMING EVENTS</span> <i class="fa-solid fa-arrow-down"></i></h2>
     <div class="events-embed">
       <div class="events" data-calendar-id="7151" data-limit="6">
         <a href="https://events.ucf.edu/" target="_blank">View Calendar</a>
+      </div>
+      <div class="no-events-message" style="display:none;">
+        <p>No upcoming events at this time. Check back soon!</p>
+        <a class="no-events-link" href="https://events.ucf.edu/calendar/7151/" target="_blank">View Past Events</a>
       </div>
     </div>
   </div>
@@ -89,44 +84,52 @@
 -->
 <section class="what-we-do-grid">
   <h2>WHAT WE DO</h2>
-  
+
   <div class="grid-container">
     <div class="grid-card">
+      <i class="card-icon fa-solid fa-people-group"></i>
       <h3>Meetings</h3>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     </div>
 
     <div class="grid-card">
+      <i class="card-icon fa-solid fa-handshake"></i>
       <h3>Socials</h3>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     </div>
 
     <div class="grid-card">
+      <i class="card-icon fa-solid fa-screwdriver-wrench"></i>
       <h3>Workshops</h3>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     </div>
-    
+
     <div class="grid-card">
+      <i class="card-icon fa-solid fa-gamepad"></i>
       <h3>Game Jams</h3>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     </div>
 
     <div class="grid-card">
+      <i class="card-icon fa-solid fa-code-branch"></i>
       <h3>Team Projects</h3>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     </div>
 
     <div class="grid-card">
+      <i class="card-icon fa-solid fa-graduation-cap"></i>
       <h3>Mentorship</h3>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     </div>
 
     <div class="grid-card">
+      <i class="card-icon fa-solid fa-plane"></i>
       <h3>GDC Trip</h3>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     </div>
 
     <div class="grid-card">
+      <i class="card-icon fa-solid fa-briefcase"></i>
       <h3>Career Fair</h3>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     </div>
@@ -172,7 +175,26 @@
 
 
 <script>
-  $(function(){ $(".events").eventsUCF(); });
+  $(function(){
+    var $events = $(".events");
+    var $noEventsMsg = $(".no-events-message");
+
+    // $.getUCFEvents is exposed by the UCF events widget script (tools/script.js).
+    // Use it to check whether the calendar actually has any upcoming events
+    // before rendering the widget, so we can show a friendly message instead
+    // of an empty box when there's nothing to display.
+    $.getUCFEvents({
+      calendar_id: $events.data("calendar-id"),
+      limit: $events.data("limit")
+    }, function(events){
+      if (events && events.length > 0) {
+        $events.eventsUCF();
+      } else {
+        $events.hide();
+        $noEventsMsg.show();
+      }
+    });
+  });
 </script>
 
 </body>
