@@ -1,0 +1,55 @@
+﻿---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameDev Knights</title>
+    <link rel="icon" type="image/png" href="media/icon-logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Jaro&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+    <script src="https://events.ucf.edu/tools/script.js" type="text/javascript"></script>
+    <link href="https://events.ucf.edu/tools/style.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+{% include header.html %}
+
+
+
+
+{% include footer.html %}
+<script src="js/script.js"></script>
+
+<!-- UCF CALENDAR WIDGET -->
+<script>
+    $(function(){
+        var $events = $(".events");
+        var $noEventsMsg = $(".no-events-message");
+
+        // $.getUCFEvents is exposed by the UCF events widget script (tools/script.js).
+        // Use it to check whether the calendar actually has any upcoming events
+        // before rendering the widget, so we can show a friendly message instead
+        // of an empty box when there's nothing to display.
+        $.getUCFEvents({
+            calendar_id: $events.data("calendar-id"),
+            limit: $events.data("limit")
+        }, function(events){
+            if (events && events.length > 0) {
+                $events.eventsUCF();
+            } else {
+                $events.hide();
+                $noEventsMsg.show();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
