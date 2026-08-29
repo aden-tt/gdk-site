@@ -209,14 +209,14 @@ main img, .gallery-item img, .program-card img {
 .hero {
     position: relative;
     text-align: center;
-    padding: 6rem 1rem 5rem;
+    padding: 3rem 1rem 2.5rem; 
     background-color: var(--darker);
     color: #fff;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 550px;
+    min-height: 300px;
 }
 
 .hero-video-overlay {
@@ -241,19 +241,19 @@ main img, .gallery-item img, .program-card img {
 }
 
 .hero-logo {
-    height: 200px;
+    height: 100px; 
     filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.6));
 }
 
 .hero h1 {
-    font-size: 4rem;
+    font-size: 2.5rem;
     color: var(--yellow);
-    margin-bottom: 0.5rem;
-    text-shadow: 4px 4px 0px #000000, 8px 8px 0px rgba(255, 255, 255, 0.1);
+    margin-bottom: 0.3rem;
+    text-shadow: 3px 3px 0px #000000, 6px 6px 0px rgba(255, 255, 255, 0.1);
 }
 
 .subtitle {
-    font-size: 1.25rem;
+    font-size: 1rem;
     color: var(--gray);
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -261,14 +261,14 @@ main img, .gallery-item img, .program-card img {
 }
 
 .hero-cta {
-    margin-top: 2rem;
+    margin-top: 1.2rem; 
     font-family: 'Jaro', sans-serif;
-    font-size: 1.5rem;
-    padding: 0.75rem 2rem;
+    font-size: 1.2rem; 
+    padding: 0.5rem 1.5rem; 
     background: var(--yellow);
     color: #000;
     border: 3px solid #000;
-    box-shadow: 4px 4px 0px #000000, 8px 8px 0px rgba(255, 255, 255, 0.1);
+    box-shadow: 3px 3px 0px #000000, 6px 6px 0px rgba(255, 255, 255, 0.1);
     cursor: pointer;
     transition: all 0.1s ease;
 }
@@ -468,6 +468,12 @@ main img, .gallery-item img, .program-card img {
     text-decoration: underline;
 }
 
+
+
+
+
+
+
 /* ==========================================================================
    UNIQUE ELEMENTS
    ========================================================================== */
@@ -490,39 +496,28 @@ main img, .gallery-item img, .program-card img {
 
 .program-card {
     background: var(--dark);
-    max-width: 1000px;
-    margin: 0 auto 1.5rem;
+    max-width: 750px; /* Reduced from 1000px to make cards narrower */
+    margin: 0 auto 1.2rem;
     border-radius: 4px;
-    padding: 1.8rem;
+    padding: 1.2rem 1.5rem; /* Reduced inner padding */
     display: flex;
-    flex-wrap: wrap;
-    gap: 1.8rem;
+    flex-direction: column; /* Stack contents vertically since there's no side-by-side image */
+    gap: 0.8rem;
     border: 3px solid #000000;
-    box-shadow: 10px 10px 0px #000000;
-}
-
-.program-image {
-    flex: 1 1 280px;
-    min-height: 240px;
-    max-height: 240px;
-    width: 100%;
-    object-fit: cover;
-    background: #2e3b44;
-    border-radius: 4px;
+    box-shadow: 6px 6px 0px #000000; /* Slightly tighter shadow */
 }
 
 .program-text {
-    flex: 2 1 350px;
     color: #ccc;
     display: flex;
     flex-direction: column;
-    gap: 0.9rem;
-    font-size: 0.95rem;
+    gap: 0.6rem;
+    font-size: 0.92rem;
 }
 
 .program-text h3 {
     color: var(--yellow);
-    font-size: 1.4rem;
+    font-size: 1.3rem;
 }
 
 .learn-more {
