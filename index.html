@@ -1,0 +1,149 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameDev Knights</title>
+    <link rel="icon" type="image/png" href="media/icon-logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Jaro&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+    <script src="https://events.ucf.edu/tools/script.js" type="text/javascript"></script>
+    <link href="https://events.ucf.edu/tools/style.css" rel="stylesheet" type="text/css">
+
+    <script src="js/script.js"></script>
+    <script src="js/media.js"></script>
+</head>
+<body>
+{% include header.html %}
+
+<section class="hero">
+    <div class="hero-video-overlay"></div>
+    <div class="hero-content">
+        <img class="hero-logo" src="media/hero-logo.png" alt="GDK Logo">
+        <h1>WELCOME TO GDK!</h1>
+        <p class="subtitle">University of Central Florida's official game development club</p>
+        <button class="hero-cta" onclick="location.href='join.html'" type="button">GET INVOLVED</button>
+    </div>
+</section>
+
+
+<main style="margin-top: -50px" class="inner-page-container">
+    <div class="content-wrapper">
+        <article class="primary-content">
+            <section class="about">
+                <div class="about-image universal-carousel"
+                     data-autoplay="true"
+                     data-interval="5000"
+                     data-slides='[
+                         {"src": "media/gdc-2026-group.jpg", "alt": "GDK members"},
+                         {"src": "media/old-costumes.png", "alt": "GDK event"},
+                         {"src": "media/gbm-1.png", "alt": "GDK workshop"},
+                         {"src": "media/career-fair-1.png", "alt": "GDK showcase"}
+                    ]'>
+                </div>
+
+                <div class="about-text">
+                    <p>GameDev Knights (GDK) is UCF's official game development club. We are a community of students passionate about creating games. We host regular meetings at the downtown campus, alongside hands-on workshops, game jams, team projects, mentorship programs, and networking events.</p>
+                </div>
+            </section>
+            
+            <section class="community-events">
+                <div class="events-col">
+                    <h2 style="text-align: center; border: none;"><i class="fa-solid fa-arrow-down"></i> <span style="margin: 0 40px;">UPCOMING EVENTS</span> <i class="fa-solid fa-arrow-down"></i></h2>
+                    <div class="events-embed">
+                        <div class="events" data-calendar-id="7151" data-limit="6">
+                            <a href="https://events.ucf.edu/" target="_blank">View Calendar</a>
+                        </div>
+                        <div class="no-events-message" style="display:none;">
+                            <p>No upcoming events at this time. Check back soon!</p>
+                            <a class="no-events-link" href="https://events.ucf.edu/calendar/7151/" target="_blank">View Past Events</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article> 
+    </div>
+</main>
+
+<section class="programs">
+    <h2>OUR PROGRAMS</h2>
+
+    <div class="program-card">
+        <div class="program-text">
+            <h3>GAME JAMS</h3>
+            <p>Get paired with seasoned game industry professionals and alumni for a semester of one-on-one guidance, portfolio reviews, and career advice.</p>
+            <button class="learn-more" onclick="location.href='programs/game-jams.html'" >LEARN MORE →</button>
+        </div>
+    </div>
+
+    <div class="program-card">
+        <div class="program-text">
+            <h3>PROJECT FORGE</h3>
+            <p>Collaborate in teams to build a game from scratch around a surprise theme within a tight timeframe. Perfect for rapid prototyping, learning new tools, and shipping a complete project. No prior experience needed.</p>
+            <button class="learn-more" onclick="location.href='programs/project-forge.html'" >LEARN MORE →</button>
+        </div>
+    </div>
+
+    <div class="program-card">
+        <div class="program-text">
+            <h3>LITTLE BIG MENTORSHIP PROGRAM</h3>
+            <p>Get paired with seasoned game industry professionals and alumni for a semester of one-on-one guidance, portfolio reviews, and career advice.</p>
+            <button class="learn-more" onclick="location.href='programs/little-big-mentorship.html'" >LEARN MORE →</button>
+        </div>
+    </div>
+
+    <div class="program-card">
+        <div class="program-text">
+            <h3>GAME DEVELOPERS CONFERENCE</h3>
+            <p>Travel with the club to the Game Developers Conference (GDC) in San Francisco to network with industry professionals, attend career panels, and explore the expo floor. Applications open every fall.</p>
+            <button class="learn-more" onclick="location.href='programs/gdc-trip.html'" >LEARN MORE →</button>
+        </div>
+    </div>
+
+    <div class="program-card">
+        <div class="program-text">
+            <h3>SPRING CAREER FAIR</h3>
+            <p>Connect directly with recruiters and studio heads from companies looking for programmers, artists, and designers. Learn more about local oppurtunities, practice your pitch, share your portfolio, and land internships or full-time roles.</p>
+            <button class="learn-more" onclick="location.href='programs/career-fair.html'" >LEARN MORE →</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+{% include footer.html %}
+
+<!-- UCF CALENDAR WIDGET -->
+<script>
+    $(function(){
+        var $events = $(".events");
+        var $noEventsMsg = $(".no-events-message");
+
+        // $.getUCFEvents is exposed by the UCF events widget script (tools/script.js).
+        // Use it to check whether the calendar actually has any upcoming events
+        // before rendering the widget, so we can show a friendly message instead
+        // of an empty box when there's nothing to display.
+        $.getUCFEvents({
+            calendar_id: $events.data("calendar-id"),
+            limit: $events.data("limit")
+        }, function(events){
+            if (events && events.length > 0) {
+                $events.eventsUCF();
+            } else {
+                $events.hide();
+                $noEventsMsg.show();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
