@@ -1,6 +1,4 @@
-﻿---
----
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,7 +18,43 @@
 </head>
 <body>
 
-{% include header.html %}
+
+<header class="navbar-container">
+    <div class="navbar-main">
+        <a href="./index.html" class="nav-branding">
+            <div class="logo-box">
+                <img class="logo-pixel" src="media/logo.png" alt="GDK Logo">
+            </div>
+            <span class="nav-title">GAMEDEV KNIGHTS</span>
+        </a>
+
+        <nav class="nav-links-desktop">
+            <a href="index.html" class="nav-item">HOME</a>
+            <div class="nav-dropdown-wrapper">
+                <a href="get-involved.html" class="nav-item">GET INVOLVED!</a>
+            </div>
+            <div class="nav-dropdown-wrapper">
+                <a class="nav-item">PROGRAMS / EVENTS<span class="dropdown-arrow">▼</span></a>
+                <div class="arcade-dropdown">
+                    <a href="game-jams.html" class="dropdown-sub-item">Game Jams</a>
+                    <a href="project-forge.html" class="dropdown-sub-item">ProjectForge</a>
+                    <a href="little-big-mentorship.html" class="dropdown-sub-item">Little Big Mentorship</a>
+                    <a href="career-fair.html" class="dropdown-sub-item">GDK Career Fair</a>
+                    <a href="gdc-trip.html" class="dropdown-sub-item">GDC Trip</a>
+                </div>
+            </div>
+            <a href="faq.html" class="nav-item">FAQ</a>
+            <a href="contact-us.html" class="nav-item">CONTACT</a>
+        </nav>
+
+        <button class="menu-toggle-btn" aria-label="Toggle Menu" onclick="document.querySelector('.navbar-container').classList.toggle('open')">
+            <span class="btn-label">MENU</span>
+            <div class="burger-icon">
+                <span></span><span></span><span></span>
+            </div>
+        </button>
+    </div>
+</header>
 
 <section class="page-banner">
     <h1>Game Developers Conference</h1>
@@ -57,7 +91,22 @@
     </div>
 </main>
 
-{% include footer.html %}
+<footer class="footer">
+    <div class="footer-left">
+        <h2>GameDev Knights</h2>
+        <p>gamedevknights@gmail.com</p>
+        <p>500 W. Livingston Street, Orlando, FL 32801</p>
+    </div>
+    <div class="footer-right">
+        <p><b>Socials</b></p>
+        <ul>
+            <li><a href="https://discord.gg/WgPk4Tp8Cg">Discord</a></li>
+            <li><a href="https://www.linkedin.com/company/game-development-knights/">LinkedIn</a></li>
+            <li><a href="https://www.instagram.com/gamedevknights/">Instagram</a></li>
+            <li><a href="https://knightconnect.campuslabs.com/engage/organization/gamedevknights">KnightConnect</a></li>
+        </ul>
+    </div>
+</footer>
 
 
 </body>
