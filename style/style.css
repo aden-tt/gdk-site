@@ -35,6 +35,12 @@ h1, h2, h3, .nav-title {
     letter-spacing: 1px;
 }
 
+h5 {
+    font-family: 'Readex Pro', sans-serif;
+    letter-spacing: 1px;
+    font-size: 1.2rem;
+}
+
 ul, ol {
     padding-left: 1.5rem;
     list-style-position: inside;
@@ -302,10 +308,37 @@ main img {
     color: #fff;
     border-bottom: 4px solid #000000;
     position: relative;
+    /* Default fallback pattern */
     background-image:
             linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
             linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     background-size: 20px 20px;
+    background-repeat: repeat;
+}
+
+
+.page-banner.has-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.page-banner.has-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 13, 13, 0.75);
+    z-index: 1;
+}
+
+/* Ensure content stays above the overlay */
+.page-banner.has-image > * {
+    position: relative;
+    z-index: 2;
 }
 
 .page-banner h1 {
@@ -354,14 +387,15 @@ main img {
 .retro-box-callout {
     background: var(--blue-light);
     border: 3px solid #000000;
-    box-shadow: 6px 6px 0px #000000;
+    box-shadow: 4px 4px 0px #111;
     padding: 1.5rem;
     margin: 2rem 0;
     border-radius: 4px;
 }
 
 .retro-box-callout h3 {
-    font-size: 1.3rem;
+    font-family: 'Readex Pro', sans-serif;
+    font-size: 1.1rem;
     margin-bottom: 0.5rem;
     color: #000;
 }
@@ -404,8 +438,17 @@ main img {
 }
 
 .sidebar-links a:hover {
-    color: var(--yellow);
     text-decoration: underline;
+}
+
+
+.primary-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border: none;
+    box-shadow: none;
+    border-radius: 4px;
 }
 
 .about {
@@ -464,9 +507,328 @@ main img {
     text-align: left;
 }
 
+/* Universal Accordions */
+.universal-accordion-group {
+    margin-bottom: 1.5rem;
+}
+
+.universal-accordion-node {
+    border-bottom: 2px solid var(--dark);
+    margin-bottom: 0.5rem;
+}
+
+.accordion-trigger {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 1rem 0;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    outline: none;
+}
+
+.accordion-trigger h5 {
+    margin: 0;
+    color: inherit;
+}
+
+.accordion-icon {
+    font-size: 1.2rem;
+    color: var(--dark);
+}
+
+.universal-accordion-node.active .accordion-icon {
+    transform: rotate(180deg);
+}
+
+.accordion-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease-out;
+}
+
+.accordion-panel-content {
+    padding-bottom: 1.2rem;
+}
 
 /* ==========================================================================
-   4. PROGRAMS MODULES
+   INVOLVEMENT HUB & PAYMENT NODES
+   ========================================================================== */
+.volunteer-staff-section {
+    margin-top: 3.5rem;
+    border-top: 4px dashed var(--dark);
+    padding-top: 2.5rem;
+}
+
+.volunteer-callout-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.v-callout-card {
+    background: #fdfdfb;
+    border: 2px solid var(--dark);
+    padding: 1.25rem;
+    border-radius: 4px;
+    box-shadow: 4px 4px 0px var(--dark);
+}
+
+.v-callout-card h4 {
+    font-family: 'Jaro', sans-serif;
+    color: var(--dark);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.v-card-icon {
+    color: var(--yellow);
+    text-shadow: 1px 1px 0px #000;
+}
+
+.staffing-highlight {
+    background: var(--yellow) !important;
+    box-shadow: 6px 6px 0px var(--dark) !important;
+}
+
+/* Get Involved Page Variations */
+.volunteer-staff-card {
+    background: #141414 !important;
+    color: var(--gray);
+}
+
+.staff-accent-text {
+    color: var(--blue-light) !important;
+}
+
+
+.staff-btn-color {
+    background: var(--blue-light);
+    color: var(--darker);
+}
+.staff-btn-color:hover {
+    background: #ffffff;
+}
+
+.involvement-hub {
+    background-color: #fdfdfb;
+    padding: 4rem 1rem;
+}
+
+.hub-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.hub-card {
+    display: flex;
+    gap: 2rem;
+    background: #ffffff;
+    border: 3px solid #000000;
+    box-shadow: 6px 6px 0px #000000;
+    padding: 2rem;
+    border-radius: 4px;
+}
+
+.premium-card {
+    background: var(--dark);
+    color: #ffffff;
+}
+
+.step-number {
+    font-family: 'Jaro', sans-serif;
+    font-size: 3rem;
+    color: var(--dark-gray);
+    line-height: 1;
+}
+
+.premium-text {
+    color: var(--yellow) !important;
+}
+
+.hub-content {
+    flex: 1;
+}
+
+.hub-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #000000;
+}
+
+.hub-content p {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.premium-card p {
+    color: var(--gray);
+}
+
+.hub-btn {
+    display: inline-block;
+    font-family: 'Jaro', sans-serif;
+    font-size: 1.1rem;
+    padding: 0.6rem 1.5rem;
+    text-decoration: none;
+    border: 2px solid #000000;
+    box-shadow: 3px 3px 0px #000000;
+    transition: all 0.1s ease;
+}
+
+.discord-color { background: #5865F2; color: #ffffff; }
+.default-color { background: var(--yellow); color: #000000; }
+
+.hub-btn:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0px #000000;
+}
+
+.hub-divider {
+    border: none;
+    border-top: 4px dashed var(--dark);
+    margin: 1rem 0;
+}
+
+/* Tier Processing Grid Matrix */
+.payment-action-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.payment-node {
+    flex: 1 1 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--dark-gray);
+    border: 3px solid #000000;
+    padding: 1.5rem 1rem 1rem;
+    text-decoration: none;
+    border-radius: 4px;
+    box-shadow: 4px 4px 0px #000000;
+    transition: all 0.1s ease;
+}
+
+.node-label {
+    font-family: 'Readex Pro', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    color: var(--gray);
+    margin-bottom: 0.25rem;
+}
+
+.node-cost {
+    font-family: 'Jaro', sans-serif;
+    font-size: 2.2rem;
+    color: #ffffff;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.node-cta {
+    width: 100%;
+    text-align: center;
+    font-family: 'Jaro', sans-serif;
+    font-size: 1.1rem;
+    padding: 0.5rem;
+    background: var(--yellow);
+    color: #000000;
+    border: 2px solid #000000;
+    box-shadow: 2px 2px 0px #000000;
+    border-radius: 2px;
+    transition: all 0.1s ease;
+}
+.event-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.popular-node {
+    border-color: var(--yellow);
+}
+
+.popular-node .node-cost {
+    color: var(--yellow);
+}
+
+.payment-node:hover {
+    border-color: #ffffff !important;
+}
+
+/* Tier Feature Matrix Component */
+.tier-comparison-box {
+    display: flex;
+    gap: 1.5rem;
+    margin: 1.5rem 0 2rem 0;
+    flex-wrap: wrap;
+}
+
+.tier-column {
+    flex: 1 1 280px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px dashed rgba(255, 255, 255, 0.2);
+    padding: 1.25rem;
+    border-radius: 4px;
+}
+
+.tier-column.paid-highlight {
+    background: rgba(255, 204, 0, 0.05);
+    border: 2px solid var(--yellow);
+}
+
+.tier-title {
+    font-family: 'Jaro', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+.free-title { color: var(--gray); }
+.paid-title { color: var(--yellow); }
+
+.tier-features {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.tier-features li::before {
+    margin-right: 0.5rem;
+    font-weight: bold;
+}
+
+.feature-included::before {
+    content: "-";
+    color: #4CAF50;
+}
+
+.feature-premium::before {
+    content: "-";
+    color: var(--yellow);
+}
+
+
+/* ==========================================================================
+   PROGRAMS MODULES
    ========================================================================== */
 .programs {
     background-color: var(--dark-gray);
@@ -531,7 +893,7 @@ main img {
 
 
 /* ==========================================================================
-   5. REUSABLE UI COMPONENTS (CAROUSELS)
+   REUSABLE UI COMPONENTS (CAROUSELS)
    ========================================================================== */
 .universal-carousel {
     position: relative;
@@ -560,7 +922,8 @@ main img {
     width: 100%;
     height: 100%;
     min-height: 340px;
-    object-fit: cover;
+    object-fit: contain;  
+    background-color: #000;  
     display: block;
 }
 
