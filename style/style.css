@@ -50,6 +50,10 @@ main img {
     cursor: pointer;
 }
 
+main iframe {
+    max-width: 100%;
+}
+
 
 /* ==========================================================================
    2. SITE ARCHITECTURE: NAVIGATION (NAVBAR)
@@ -1235,13 +1239,152 @@ main img {
 }
 
 @media (max-width: 700px) {
+    .nav-title {
+        font-size: 1.7rem;
+    }
+    .hero {
+        padding: 4rem 1rem 3rem;
+        min-height: 420px;
+    }
+    .hero-logo {
+        height: 120px;
+    }
     .hero h1 {
         font-size: 2rem;
     }
+    .subtitle {
+        font-size: 1rem;
+    }
+    .hero-cta {
+        font-size: 1.2rem;
+        padding: 0.65rem 1.5rem;
+    }
+    .page-banner {
+        padding: 2.5rem 1rem 2rem;
+    }
+    .page-banner h1 {
+        font-size: 2.1rem;
+    }
+    .inner-page-container {
+        padding: 2rem 1rem;
+    }
+    .content-wrapper {
+        gap: 1.5rem;
+    }
+    .about {
+        margin: 2rem auto;
+        gap: 1rem;
+    }
+    .about-image {
+        min-height: 260px;
+        flex-basis: 100%;
+    }
+    .carousel-slide,
+    .carousel-slide img {
+        min-height: 260px;
+    }
+    .about-text {
+        padding: 1.5rem 1.25rem;
+    }
+    .primary-content h2 {
+        font-size: 1.5rem;
+    }
+    main iframe {
+        width: 100%;
+        max-width: 100%;
+        height: 480px;
+    }
     .program-card {
         flex-direction: column;
+        padding: 1.4rem;
     }
     .learn-more {
         align-self: flex-start;
+    }
+    .programs h2 {
+        font-size: 1.9rem;
+    }
+    .hub-card {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+    .step-number {
+        font-size: 2.2rem;
+    }
+    .footer {
+        flex-direction: column;
+        text-align: left;
+        padding: 1.8rem 1.5rem;
+    }
+    .footer-right {
+        text-align: left;
+    }
+    .events-embed .events th:first-child,
+    .events-embed .events td:first-child {
+        width: auto !important;
+    }
+    .events-embed .events table,
+    .events-embed .events tbody,
+    .events-embed .events tr {
+        display: block;
+        width: 100%;
+    }
+    .events-embed .events td {
+        display: block;
+        padding: 0.2rem 0 !important;
+    }
+    .events-embed .events th {
+        display: none !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-main {
+        padding-right: 0.75rem;
+    }
+    .logo-box {
+        padding: 0 0.8rem;
+    }
+    .logo-pixel {
+        width: 32px;
+        height: 32px;
+    }
+    .nav-title {
+        font-size: 1.4rem;
+        padding-left: 0.6rem;
+    }
+    .btn-label {
+        display: none;
+    }
+    .menu-toggle-btn {
+        padding: 8px 10px;
+    }
+    .hero h1 {
+        font-size: 1.6rem;
+    }
+    .hero-logo {
+        height: 90px;
+    }
+    .hero-cta {
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+    }
+    main iframe {
+        height: 420px;
+    }
+    .programs h2 {
+        font-size: 1.5rem;
+        padding: 0.5rem;
+    }
+    .program-text h3 {
+        font-size: 1.2rem;
+    }
+    .footer-left h2 {
+        font-size: 1.3rem;
+    }
+    .payment-node,
+    .tier-column {
+        flex-basis: 100%;
     }
 }
