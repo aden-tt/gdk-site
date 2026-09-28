@@ -30,7 +30,7 @@ body {
 }
 
 /* Typography Hierarchy */
-h1, h2, h3, .nav-title {
+h1, h2, .nav-title {
     font-family: 'Jaro', sans-serif;
     letter-spacing: 1px;
 }
@@ -642,6 +642,10 @@ main iframe {
     box-shadow: 6px 6px 0px #000000;
     padding: 2rem;
     border-radius: 4px;
+}
+
+.primary-content p {
+    margin-bottom: 15px;
 }
 
 .premium-card {
