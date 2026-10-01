@@ -54,6 +54,9 @@ main iframe {
     max-width: 100%;
 }
 
+[id] {
+    scroll-margin-top: 100px;
+}
 
 /* ==========================================================================
    2. SITE ARCHITECTURE: NAVIGATION (NAVBAR)
